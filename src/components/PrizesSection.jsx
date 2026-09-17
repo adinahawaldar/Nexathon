@@ -3,22 +3,22 @@ import { Trophy, Award, Medal, Gift, Sparkles, Star, Zap } from 'lucide-react';
 
 const PrizesSection = () => {
   return (
-    <section id="prizes" className="lake-section">
+    <section id="prizes" className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col items-center text-center scroll-mt-20">
       {/* Station Indicator */}
-      <div className="lake-badge lake-badge-amber">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-bold font-mono tracking-wider uppercase mb-5 backdrop-blur-xl shadow-[0_0_15px_rgba(251,191,36,0.15)]">
         <Sparkles className="w-3.5 h-3.5 text-amber-400" />
         <span>LAKE STATION 03 • PRIZE POOL & REWARDS</span>
       </div>
 
       {/* Section Title */}
-      <h2 className="lake-heading">
-        ₹100,000+ bounty pool. <br />
+      <h2 className="font-['Outfit','Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-tight text-white mb-5 text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
+        ₹20,000+ bounty pool. <br />
         <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-pink-400 bg-clip-text text-transparent">
           national honor & rewards.
         </span>
       </h2>
 
-      <p className="lake-subdesc">
+      <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto mb-12 text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
         Excellence deserves celebration. Stand atop the podium and claim prestigious trophies, generous cash grants, accelerator incubation, and industry networking.
       </p>
 
@@ -26,7 +26,7 @@ const PrizesSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl items-end mb-16">
         
         {/* 1st Runner Up (Left - Rank 2) */}
-        <div className="lake-pedestal lake-pedestal-rank2 group order-2 md:order-1">
+        <div className="relative flex flex-col justify-between rounded-3xl p-8 bg-[#060a16]/75 backdrop-blur-2xl border border-sky-400/30 hover:border-sky-400 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(56,189,248,0.25)] transition-all duration-300 text-left group order-2 md:order-1">
           <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
           <div>
             <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-300 mb-6 group-hover:scale-110 transition-transform">
@@ -35,7 +35,7 @@ const PrizesSection = () => {
             <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">RUNNER UP</span>
             <h3 className="text-2xl font-bold text-white mt-1 mb-2">Second Prize</h3>
             <div className="text-3xl font-extrabold font-mono text-white mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">
-              ₹30,000
+              ₹6,000
             </div>
             <ul className="space-y-2.5 text-xs sm:text-sm text-zinc-300 mb-6">
               <li className="flex items-center gap-2">
@@ -58,7 +58,7 @@ const PrizesSection = () => {
         </div>
 
         {/* Grand Winner (Center - Rank 1 - Highest Pedestal) */}
-        <div className="lake-pedestal lake-pedestal-rank1 group md:-translate-y-6 order-1 md:order-2">
+        <div className="relative flex flex-col justify-between rounded-3xl p-8 md:p-9 bg-gradient-to-b from-amber-500/15 via-[#060a16]/85 to-[#040710]/95 backdrop-blur-2xl border-2 border-amber-400/60 shadow-[0_20px_60px_rgba(251,191,36,0.25)] hover:border-amber-300 hover:-translate-y-3 hover:shadow-[0_30px_80px_rgba(251,191,36,0.35)] transition-all duration-300 text-left group md:-translate-y-6 order-1 md:order-2">
           <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-black text-[11px] font-mono font-black tracking-widest uppercase shadow-lg">
             OVERALL CHAMPION
           </div>
@@ -70,7 +70,7 @@ const PrizesSection = () => {
             <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">GRAND WINNER</span>
             <h3 className="text-3xl font-extrabold text-white mt-1 mb-2">First Prize</h3>
             <div className="text-4xl font-black font-mono text-white mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-pink-300">
-              ₹50,000
+              ₹10,000
             </div>
             <ul className="space-y-3 text-xs sm:text-sm text-zinc-200 mb-8">
               <li className="flex items-center gap-2 font-medium">
@@ -87,7 +87,7 @@ const PrizesSection = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Star className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>$2,500 Cloud & Infrastructure Grant</span>
+                <span>Cloud & Developer Tooling Grant</span>
               </li>
             </ul>
           </div>
@@ -98,7 +98,7 @@ const PrizesSection = () => {
         </div>
 
         {/* Best Research Paper (Right - Rank 3) */}
-        <div className="lake-pedestal lake-pedestal-rank3 group order-3">
+        <div className="relative flex flex-col justify-between rounded-3xl p-8 bg-[#060a16]/75 backdrop-blur-2xl border border-pink-400/30 hover:border-pink-400 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(244,114,182,0.25)] transition-all duration-300 text-left group order-3">
           <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl pointer-events-none" />
           <div>
             <div className="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-400/30 flex items-center justify-center text-pink-300 mb-6 group-hover:scale-110 transition-transform">
@@ -107,7 +107,7 @@ const PrizesSection = () => {
             <span className="text-xs font-mono text-pink-400 font-bold uppercase tracking-wider">RESEARCH FELLOWSHIP</span>
             <h3 className="text-2xl font-bold text-white mt-1 mb-2">Best Paper Award</h3>
             <div className="text-3xl font-extrabold font-mono text-white mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-400">
-              ₹20,000
+              ₹4,000
             </div>
             <ul className="space-y-2.5 text-xs sm:text-sm text-zinc-300 mb-6">
               <li className="flex items-center gap-2">

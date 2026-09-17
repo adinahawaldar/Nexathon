@@ -253,7 +253,7 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
   }, []);
 
   return (
-    <section className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 flex flex-col items-center">
+    <section id="countdown" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 flex flex-col items-center scroll-mt-20">
       {/* Station Badge */}
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-mono mb-4 backdrop-blur-md">
         <Timer className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
@@ -360,7 +360,7 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
             </div>
             <div className="flex items-center gap-2.5 text-xs text-zinc-300">
               <CheckCircle2 className="w-4 h-4 text-orange-400 flex-shrink-0" />
-              <span>Full eligibility for the ₹100,000+ national prize pool</span>
+              <span>Full eligibility for the ₹20,000+ national prize pool</span>
             </div>
             <div className="flex items-center gap-2.5 text-xs text-zinc-300">
               <CheckCircle2 className="w-4 h-4 text-pink-400 flex-shrink-0" />
@@ -371,7 +371,7 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
           {/* Action CTA */}
           <button
             onClick={onRegisterClick}
-            className="pill-toggle-active w-full sm:w-auto self-start py-3.5 px-8 flex items-center justify-center gap-3 text-sm font-bold shadow-[0_0_30px_rgba(255,119,0,0.5)] hover:scale-105 transition-transform"
+            className="w-full sm:w-auto self-start py-3.5 px-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white flex items-center justify-center gap-3 text-sm font-bold shadow-[0_0_30px_rgba(255,119,0,0.55),inset_0_1px_0_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-transform cursor-pointer"
           >
             <span>CONFIRM YOUR REGISTRATION BEFORE OCT 7TH</span>
             <ArrowUpRight className="w-4 h-4" />

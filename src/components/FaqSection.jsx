@@ -28,22 +28,22 @@ const FaqSection = ({ onRegisterClick }) => {
   ];
 
   return (
-    <section id="faq" className="lake-section">
+    <section id="faq" className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col items-center text-center scroll-mt-20">
       {/* Station Indicator */}
-      <div className="lake-badge lake-badge-pink">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-400/30 text-pink-400 text-xs font-bold font-mono tracking-wider uppercase mb-5 backdrop-blur-xl shadow-[0_0_15px_rgba(244,114,182,0.15)]">
         <Sparkles className="w-3.5 h-3.5 text-pink-400" />
         <span>LAKE STATION 05 • INQUIRIES & PORTAL</span>
       </div>
 
       {/* Section Title */}
-      <h2 className="lake-heading">
+      <h2 className="font-['Outfit','Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-tight text-white mb-5 text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
         frequently asked <br />
-        <span className="lake-heading-gradient">
+        <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-400 to-amber-300">
           questions
         </span>
       </h2>
 
-      <p className="lake-subdesc">
+      <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto mb-12 text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
         Everything you need to know about track eligibility, manuscript guidelines, hardware setups, and evaluation standards.
       </p>
 
@@ -103,7 +103,7 @@ const FaqSection = ({ onRegisterClick }) => {
 
         <button
           onClick={onRegisterClick}
-          className="pill-toggle-active text-sm sm:text-base py-3.5 px-8 flex items-center gap-2 hover:scale-105 transition-transform"
+          className="text-sm sm:text-base py-3.5 px-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold flex items-center gap-2 shadow-[0_0_25px_rgba(255,119,0,0.55),inset_0_1px_0_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
         >
           <span>Register Your Submission</span>
           <ArrowUpRight className="w-5 h-5" />

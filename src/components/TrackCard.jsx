@@ -32,7 +32,7 @@ const TrackCard = ({ title, subtitle, trackNumber, category, highlights, icon: I
         transition: rotate.x === 0 ? 'transform 0.5s ease-out' : 'none',
         transformStyle: 'preserve-3d'
       }}
-      className="relative group rounded-3xl p-8 glass-panel glass-panel-hover border border-cyan-500/20 hover:border-cyan-400/60 cursor-pointer flex flex-col justify-between overflow-hidden"
+      className="relative group rounded-3xl p-8 bg-[#080e1c]/60 backdrop-blur-2xl border border-cyan-500/20 hover:border-cyan-400/60 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] cursor-pointer flex flex-col justify-between overflow-hidden transition-all duration-300"
     >
       {/* Background Ambient Glow */}
       <div 

@@ -34,22 +34,22 @@ const TimelineSection = () => {
   ];
 
   return (
-    <section id="timeline" className="lake-section">
+    <section id="timeline" className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col items-center text-center scroll-mt-20">
       {/* Station Indicator */}
-      <div className="lake-badge">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-sky-400 text-xs font-bold font-mono tracking-wider uppercase mb-5 backdrop-blur-xl shadow-[0_0_15px_rgba(0,240,255,0.15)]">
         <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
         <span>LAKE STATION 04 • EVENT ROADMAP</span>
       </div>
 
       {/* Section Title */}
-      <h2 className="lake-heading">
+      <h2 className="font-['Outfit','Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-tight text-white mb-5 text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
         milestones along the <br />
-        <span className="lake-heading-gradient">
+        <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-400 to-amber-300">
           innovation current
         </span>
       </h2>
 
-      <p className="lake-subdesc">
+      <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto mb-12 text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
         Follow the chronological path from registration to the grand finale stage. Keep track of deadlines and milestone deliverables.
       </p>
 
@@ -58,7 +58,7 @@ const TimelineSection = () => {
         {steps.map((step, idx) => (
           <div 
             key={idx} 
-            className="lake-glass-card group flex flex-col justify-between"
+            className="relative overflow-hidden bg-[#080e1c]/60 backdrop-blur-2xl border border-white/10 rounded-3xl p-7 flex flex-col justify-between text-left shadow-[0_16px_40px_rgba(0,0,0,0.6)] hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_24px_60px_rgba(0,240,255,0.18)] transition-all duration-300 group"
           >
             {/* Ambient Corner Glow */}
             <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all pointer-events-none" />
