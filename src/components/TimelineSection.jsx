@@ -1,99 +1,161 @@
 import React from 'react';
-import { Calendar, CheckCircle, Clock, Sparkles, Flag, Rocket } from 'lucide-react';
 
 const TimelineSection = () => {
-  const steps = [
+  const scheduleData = [
     {
-      phase: 'PHASE 01',
-      date: 'SEPTEMBER 20, 2026',
-      title: 'Portal Registrations Open',
-      desc: 'Form teams of 1-4 members, select between Project Presentation or Paper Presentation track, and register your profile.',
-      status: 'CURRENT'
+      day: 'Thu',
+      date: '17',
+      month: 'September, 2026',
+      badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+      lineColor: 'from-emerald-400 to-emerald-600',
+      bulletColor: 'text-emerald-400',
+      events: [
+        {
+          title: 'Registration Opens',
+          details: [
+            { text: 'Paper Presentation & Project Presentation Tracks' },
+            { text: 'Mode: Online Portal Submissions Live' }
+          ]
+        }
+      ]
     },
     {
-      phase: 'PHASE 02',
-      date: 'OCTOBER 10, 2026',
-      title: 'Abstract & Proposal Submission',
-      desc: 'Upload your research paper abstract (IEEE template) or project architecture proposal deck for initial jury screening.',
-      status: 'UPCOMING'
+      day: 'Fri',
+      date: '02',
+      month: 'October, 2026',
+      badgeColor: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30',
+      lineColor: 'from-indigo-400 to-indigo-600',
+      bulletColor: 'text-indigo-400',
+      events: [
+        {
+          title: 'Registration Closes',
+          details: [
+            { text: 'Submission: Final Papers, Abstracts & Project Proposals' },
+            { text: 'Deadline: 11:59 PM IST' }
+          ]
+        }
+      ]
     },
     {
-      phase: 'PHASE 03',
-      date: 'OCTOBER 24, 2026',
-      title: 'National Shortlist Released',
-      desc: 'Top 50 projects and top 30 research papers announced for the grand in-person and hybrid showcase stage.',
-      status: 'UPCOMING'
+      day: 'TBA',
+      date: 'TBD',
+      month: 'October, 2026',
+      badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+      lineColor: 'from-orange-400 to-orange-600',
+      bulletColor: 'text-orange-400',
+      events: [
+        {
+          title: 'Selection & Shortlisting Phase',
+          details: [
+            { text: 'Status: To be finalized' },
+            { text: 'Screening & notification of shortlisted teams' }
+          ]
+        }
+      ]
     },
     {
-      phase: 'PHASE 04',
-      date: 'NOVEMBER 14-15, 2026',
-      title: 'The Grand Finale & Expo',
-      desc: 'Live stage defense, jury evaluations, live prototype bench tests, keynote talks, and awards gala.',
-      status: 'FINALE'
+      day: 'Fri',
+      date: '09',
+      month: 'October, 2026',
+      badgeColor: 'bg-sky-500/20 text-sky-400 border-sky-500/30',
+      lineColor: 'from-sky-400 via-cyan-400 to-blue-600',
+      bulletColor: 'text-sky-400',
+      events: [
+        {
+          title: 'Nexathon 2026 - Main Event Day',
+          details: [
+            { text: "Venue: Anjuman-I-Islam's Kalsekar Technical Campus (AIKTC)" },
+            { text: 'Format: Live Project Demonstrations & Research Paper Defenses' }
+          ]
+        },
+        {
+          title: 'Results & Winner Announcements',
+          details: [
+            { text: 'Grand Jury Evaluation & Official Podium Reveal' },
+            { text: 'Cash Prize Bounty Winners Declared' }
+          ]
+        },
+        {
+          title: 'Valedictory Ceremony',
+          details: [
+            { text: 'Time: By 4:00 PM' },
+            { text: 'Felicitation, Certificate Handover & Closing Address' }
+          ]
+        }
+      ]
     }
   ];
 
   return (
-    <section id="timeline" className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col items-center text-center scroll-mt-20">
-      {/* Station Indicator */}
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-sky-400 text-xs font-bold font-mono tracking-wider uppercase mb-5 backdrop-blur-xl shadow-[0_0_15px_rgba(0,240,255,0.15)]">
-        <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-        <span>LAKE STATION 04 • EVENT ROADMAP</span>
+    <section 
+      id="timeline" 
+      className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-8 py-20 md:py-28 text-left scroll-mt-20"
+    >
+      {/* Header: Open style matching reference image */}
+      <div className="flex items-center gap-3 mb-10 sm:mb-14 pb-5 border-b border-white/15">
+        <span className="w-3.5 h-3.5 bg-[#4ade80] rounded-[3px] shadow-[0_0_14px_rgba(74,222,128,0.7)] inline-block shrink-0" />
+        <h2 className="font-['Space_Grotesk',sans-serif] font-medium text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">
+          Timeline at a glance
+        </h2>
       </div>
 
-      {/* Section Title */}
-      <h2 className="font-['Outfit','Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-tight text-white mb-5 text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
-        milestones along the <br />
-        <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-400 to-amber-300">
-          innovation current
-        </span>
-      </h2>
-
-      <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto mb-12 text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-        Follow the chronological path from registration to the grand finale stage. Keep track of deadlines and milestone deliverables.
-      </p>
-
-      {/* Timeline Steps */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full max-w-6xl text-left">
-        {steps.map((step, idx) => (
+      {/* Open Timeline Rows (Edge-to-edge layout, separated by clean divider lines) */}
+      <div className="flex flex-col divide-y divide-zinc-800/90">
+        {scheduleData.map((item, idx) => (
           <div 
             key={idx} 
-            className="relative overflow-hidden bg-[#080e1c]/60 backdrop-blur-2xl border border-white/10 rounded-3xl p-7 flex flex-col justify-between text-left shadow-[0_16px_40px_rgba(0,0,0,0.6)] hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_24px_60px_rgba(0,240,255,0.18)] transition-all duration-300 group"
+            className="py-8 sm:py-10 first:pt-0 last:pb-0 flex flex-row items-start gap-4 sm:gap-8 md:gap-12 group"
           >
-            {/* Ambient Corner Glow */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all pointer-events-none" />
-
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono text-cyan-400 font-bold tracking-widest">{step.phase}</span>
-                <span className={`text-[10px] font-mono px-2.5 py-1 rounded-full border ${
-                  step.status === 'CURRENT'
-                    ? 'border-emerald-500/40 text-emerald-300 bg-emerald-950/40 animate-pulse'
-                    : step.status === 'FINALE'
-                    ? 'border-amber-500/40 text-amber-300 bg-amber-950/40'
-                    : 'border-zinc-700 text-zinc-400 bg-zinc-900/40'
-                }`}>
-                  {step.status}
+            {/* Left Column: Day Badge, Giant Date, Month */}
+            <div className="w-[110px] sm:w-[150px] md:w-[170px] shrink-0 text-left pt-0.5">
+              <div className="flex items-baseline gap-2 sm:gap-2.5 mb-1.5">
+                <span className={`text-[10px] sm:text-xs font-mono font-bold px-2 py-0.5 rounded-md border ${item.badgeColor} leading-tight`}>
+                  {item.day}
+                </span>
+                <span className="font-['Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none">
+                  {item.date}
                 </span>
               </div>
-
-              <div className="text-xs font-mono text-zinc-400 mb-2 flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{step.date}</span>
-              </div>
-
-              <h3 className="text-lg font-bold text-white mb-3 group-hover:text-cyan-200 transition-colors">
-                {step.title}
-              </h3>
-
-              <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed">
-                {step.desc}
+              <p className="text-[11px] sm:text-xs text-zinc-400 font-mono tracking-wide">
+                {item.month}
               </p>
             </div>
 
-            <div className="pt-5 mt-5 border-t border-white/10 flex items-center text-xs font-mono text-cyan-400/80">
-              <span>STEP 0{idx + 1} OF 04</span>
+            {/* Vertical Accent Line */}
+            <div className={`w-[2px] self-stretch bg-gradient-to-b ${item.lineColor} rounded-full shrink-0 my-1 opacity-85 group-hover:opacity-100 transition-opacity`} />
+
+            {/* Right Column: Events and Details */}
+            <div className="flex-1 space-y-6 sm:space-y-7 pt-0.5 pl-1 sm:pl-2">
+              {item.events.map((ev, evIdx) => (
+                <div key={evIdx} className="space-y-2">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight leading-snug group-hover:text-zinc-100 transition-colors">
+                    {ev.title}
+                  </h3>
+                  <div className="space-y-1.5">
+                    {ev.details.map((detail, dIdx) => (
+                      <div 
+                        key={dIdx} 
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300 leading-relaxed"
+                      >
+                        {/* Target Concentric Ring Bullet Icon */}
+                        <svg 
+                          className={`w-3.5 h-3.5 ${item.bulletColor} shrink-0 mt-0.5 select-none`} 
+                          viewBox="0 0 16 16" 
+                          fill="none"
+                        >
+                          <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" />
+                          <circle cx="8" cy="8" r="2.5" fill="currentColor" />
+                        </svg>
+                        <span className="text-zinc-300">
+                          {detail.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
+
           </div>
         ))}
       </div>

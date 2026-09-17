@@ -10,10 +10,12 @@ import canvasConfetti from 'canvas-confetti';
 import ScrollyLakeBackground from '../components/ScrollyLakeBackground';
 import Navbar from '../components/Navbar';
 import RubiksCountdownSection from '../components/RubiksCountdownSection';
+import AboutSection from '../components/AboutSection';
 import TracksSection from '../components/TracksSection';
 import PrizesSection from '../components/PrizesSection';
 import TimelineSection from '../components/TimelineSection';
 import FaqSection from '../components/FaqSection';
+import FooterSection from '../components/FooterSection';
 
 const HeroSection = ({ onKnowMore }) => {
   const [activeTab, setActiveTab] = useState('project'); // 'project' | 'paper'
@@ -70,7 +72,7 @@ const HeroSection = ({ onKnowMore }) => {
       {/* ========================================================================= */}
       {/* 1. HERO STAGE • THE ENTRANCE PORTAL */}
       {/* ========================================================================= */}
-      <section id="hero" className="relative z-10 max-w-7xl w-full mx-auto min-h-screen pt-20 pb-20 px-4 sm:px-6 flex flex-col items-center justify-center text-center">
+      <section id="hero" className="relative z-10 max-w-7xl w-full mx-auto min-h-screen pt-32 sm:pt-40 md:pt-44 pb-20 px-4 sm:px-6 flex flex-col items-center justify-center text-center">
 
         {/* Seamless Radial Backdrop Blur & Soft Vignette (100% borderless, NO box, feathered blur strictly behind text) */}
         <div className="absolute inset-0 max-w-6xl mx-auto -z-10 pointer-events-none flex items-center justify-center overflow-visible">
@@ -80,18 +82,18 @@ const HeroSection = ({ onKnowMore }) => {
             style={{
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              background: 'radial-gradient(ellipse 60% 50% at 50% 48%, rgba(2, 6, 20, 0.72) 0%, rgba(2, 6, 20, 0.45) 45%, rgba(2, 6, 20, 0) 80%)',
-              maskImage: 'radial-gradient(ellipse 58% 48% at 50% 48%, black 30%, transparent 80%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 58% 48% at 50% 48%, black 30%, transparent 80%)'
+              background: 'radial-gradient(ellipse 60% 50% at 50% 52%, rgba(2, 6, 20, 0.72) 0%, rgba(2, 6, 20, 0.45) 45%, rgba(2, 6, 20, 0) 80%)',
+              maskImage: 'radial-gradient(ellipse 58% 48% at 50% 52%, black 30%, transparent 80%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 58% 48% at 50% 52%, black 30%, transparent 80%)'
             }}
           />
           {/* Subtle central depth glow */}
           <div className="absolute w-[700px] h-[350px] bg-cyan-950/30 rounded-full blur-3xl -z-10 pointer-events-none" />
         </div>
 
-        {/* Massive Display Title (Bold and Grand on Mobile & Desktop) */}
+        {/* Massive Display Title - Placed comfortably down from the top navbar */}
         <h1 
-          className="font-black text-center mb-3 sm:mb-4 uppercase select-none max-w-full text-transparent bg-clip-text px-2"
+          className="font-black text-center mt-3 sm:mt-6 mb-3 sm:mb-4 uppercase select-none max-w-full text-transparent bg-clip-text px-2"
           style={{
             fontFamily: "'Oxanium', 'Orbitron', sans-serif",
             fontSize: 'clamp(3.3rem, 13.8vw, 8.8rem)',
@@ -141,19 +143,19 @@ const HeroSection = ({ onKnowMore }) => {
           </div>
         </div>
 
-        {/* Discover the Event CTA - Sleek Minimal on Mobile, Full on Desktop */}
-        <div className="relative inline-flex items-center justify-center mt-3 sm:mt-4 mb-2 group mx-auto z-20">
-          <div className="absolute -inset-1 sm:-inset-1.5 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-600 opacity-70 group-hover:opacity-100 blur-md sm:blur-xl transition-all duration-500 animate-pulse pointer-events-none" />
-          <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-300 via-teal-300 to-blue-400 opacity-40 blur-xs sm:blur-sm pointer-events-none" />
+        {/* Discover the Event CTA - Professional, Clean & Prestigious */}
+        <div className="relative inline-flex items-center justify-center mt-3 sm:mt-5 mb-2 group mx-auto z-20">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute -inset-1 rounded-full bg-white/15 group-hover:bg-cyan-400/20 blur-lg transition-all duration-300 pointer-events-none" />
           
           <button
             id="discover-event-btn"
             onClick={handleDiscoverEvent}
-            className="relative inline-flex items-center gap-2 sm:gap-3.5 px-5 sm:px-12 py-2.5 sm:py-4 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:via-sky-300 hover:to-blue-400 text-slate-950 font-extrabold text-[11px] sm:text-sm tracking-wider uppercase border border-white/60 shadow-[0_0_20px_rgba(0,240,255,0.6),0_6px_16px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.8)] sm:shadow-[0_0_35px_rgba(0,240,255,0.7),0_12px_28px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.8)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
+            className="relative inline-flex items-center gap-2.5 sm:gap-3.5 px-6 sm:px-10 py-3 sm:py-3.5 rounded-full bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-xs sm:text-sm tracking-wider uppercase border border-white/80 shadow-[0_10px_25px_rgba(0,0,0,0.5),0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.6),0_0_28px_rgba(255,255,255,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
           >
             <span>Discover the Event</span>
-            <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/15 flex items-center justify-center text-slate-950 transition-transform group-hover:translate-y-0.5 sm:group-hover:translate-y-1">
-              <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 stroke-[2.5]" />
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-slate-950 text-white flex items-center justify-center transition-transform group-hover:translate-y-0.5">
+              <ChevronDown className="w-3.5 h-3.5 stroke-[2.5]" />
             </div>
           </button>
         </div>
@@ -161,9 +163,14 @@ const HeroSection = ({ onKnowMore }) => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. 3D RUBIK'S CUBE SOLVER & REGISTRATION COUNTDOWN (CLOSING OCTOBER 7TH) */}
+      {/* 2. 3D RUBIK'S CUBE SOLVER & REGISTRATION COUNTDOWN (CLOSING OCTOBER 2ND) */}
       {/* ========================================================================= */}
       <RubiksCountdownSection onRegisterClick={() => handleOpenRegistration(activeTab)} />
+
+      {/* ========================================================================= */}
+      {/* 2.5 WHAT IS NEXATHON • ABOUT SECTION */}
+      {/* ========================================================================= */}
+      <AboutSection />
 
       {/* ========================================================================= */}
       {/* 3. COMPETITION TRACKS (PROJECT & PAPER PRESENTATION) */}
@@ -296,10 +303,8 @@ const HeroSection = ({ onKnowMore }) => {
         </div>
       )}
 
-      {/* Clean Minimal Footer */}
-      <footer className="py-6 border-t border-zinc-900/50 text-center text-zinc-600 text-xs font-mono z-10">
-        <p>© 2026 nexathon tech symposium</p>
-      </footer>
+      {/* Editorial Footer with Data Science Tokens Pile */}
+      <FooterSection onRegisterClick={() => handleOpenRegistration(activeTab)} />
     </div>
   );
 };

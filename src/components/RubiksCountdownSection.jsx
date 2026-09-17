@@ -47,7 +47,7 @@ const RubiksCountdownSection = () => {
     scene.add(mainGroup);
 
     // -------------------------------------------------------------
-    // CREATE FRONT FACE TEXTURE TILES ("REGISTRATION CLOSING ON 7TH OCTOBER")
+    // CREATE FRONT FACE TEXTURE TILES ("REGISTRATION CLOSING ON 2ND OCTOBER")
     // -------------------------------------------------------------
     // Master 1024x1024 canvas that renders the message with neon cyber styling
     const masterCanvas = document.createElement('canvas');
@@ -114,13 +114,13 @@ const RubiksCountdownSection = () => {
     mCtx.fillText('CLOSING ON', 512, tileSize * 1.5);
     mCtx.restore();
 
-    // ROW 3 (Bottom): "7TH OCTOBER"
+    // ROW 3 (Bottom): "2ND OCTOBER"
     mCtx.save();
     mCtx.font = '900 86px "Oxanium", "Orbitron", "Space Grotesk", sans-serif';
     mCtx.shadowColor = 'rgba(0, 240, 255, 1)';
     mCtx.shadowBlur = 35;
     mCtx.fillStyle = '#00f0ff';
-    mCtx.fillText('7TH OCTOBER', 512, tileSize * 2.5);
+    mCtx.fillText('2ND OCTOBER', 512, tileSize * 2.5);
     mCtx.restore();
 
     // Sliced textures map: key `${col}_${row}`
@@ -396,6 +396,8 @@ const RubiksCountdownSection = () => {
       id="countdown" 
       className="relative z-10 w-full max-w-5xl mx-auto min-h-[540px] sm:min-h-[620px] flex flex-col items-center justify-center py-8 px-4 scroll-mt-10 overflow-visible"
     >
+      {/* 3D Rubik's Cube floating seamlessly in 3D space */}
+
       {/* 3D Rubik's Cube floating in the middle - NO boxes, NO extra cards */}
       <div 
         ref={mountRef} 

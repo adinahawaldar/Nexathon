@@ -164,15 +164,15 @@ const ScrollyLakeBackground = () => {
           src={scene1} 
           alt="Scene 1 - Hero Lake Entrance" 
           className="w-full h-full object-cover object-center" 
-          style={{ filter: 'brightness(0.78) contrast(1.08)' }}
+          style={{ filter: 'brightness(0.75) contrast(1.06)' }}
         />
       </div>
 
-      {/* Scene 2: Crystal Canyon (Rubik's Cube & About Nexathon) */}
+      {/* Scene 2: Crystal Canyon (Rubik's Cube & About Nexathon) - Subdued opacity in the middle */}
       <div 
         className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out will-change-transform"
         style={{
-          opacity: o2,
+          opacity: o2 * 0.42,
           transform: `scale(${1.04 + (scrollFraction - 0.25) * 0.04}) translate3d(0, ${(scrollFraction - 0.25) * -20}px, 0)`
         }}
       >
@@ -180,15 +180,15 @@ const ScrollyLakeBackground = () => {
           src={scene2} 
           alt="Scene 2 - Crystal Canyon" 
           className="w-full h-full object-cover object-center" 
-          style={{ filter: 'brightness(0.92) contrast(1.06)' }}
+          style={{ filter: 'brightness(0.62) contrast(1.05)' }}
         />
       </div>
 
-      {/* Scene 3: Lake Arena (Project & Paper presentation pods, Crystal Trophies) */}
+      {/* Scene 3: Lake Arena (Presentation Pods & Tracks) - Subdued opacity in the middle */}
       <div 
         className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out will-change-transform"
         style={{
-          opacity: o3,
+          opacity: o3 * 0.46,
           transform: `scale(${1.04 + (scrollFraction - 0.5) * 0.04}) translate3d(0, ${(scrollFraction - 0.5) * -20}px, 0)`
         }}
       >
@@ -196,7 +196,7 @@ const ScrollyLakeBackground = () => {
           src={scene3} 
           alt="Scene 3 - Presentation Arena & Trophies" 
           className="w-full h-full object-cover object-center" 
-          style={{ filter: 'brightness(0.92) contrast(1.06)' }}
+          style={{ filter: 'brightness(0.65) contrast(1.05)' }}
         />
       </div>
 
@@ -204,7 +204,7 @@ const ScrollyLakeBackground = () => {
       <div 
         className="absolute inset-0 w-full h-full transition-opacity duration-700 ease-out will-change-transform"
         style={{
-          opacity: o4,
+          opacity: o4 * 0.7,
           transform: `scale(${1.04 + (scrollFraction - 0.75) * 0.04}) translate3d(0, ${(scrollFraction - 0.75) * -20}px, 0)`
         }}
       >
@@ -212,25 +212,38 @@ const ScrollyLakeBackground = () => {
           src={scene4} 
           alt="Scene 4 - Portal Gateway Horizon" 
           className="w-full h-full object-cover object-center" 
-          style={{ filter: 'brightness(0.92) contrast(1.06)' }}
+          style={{ filter: 'brightness(0.72) contrast(1.06)' }}
         />
       </div>
 
       {/* Persistent light streaks and meteor trails */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
 
-      {/* Darkening vignettes to ensure high text contrast and visual sharpness */}
+      {/* Dedicated Middle Section Dimmer (significantly reduces bg intensity in the middle of page/scroll) */}
       <div 
-        className="absolute inset-x-0 top-0 h-44 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, rgba(3, 7, 22, 0.85) 0%, rgba(3, 7, 22, 0.4) 65%, transparent 100%)' }}
+        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+        style={{ 
+          backgroundColor: '#040816',
+          opacity: 0.28 + (Math.sin(Math.min(Math.max(scrollFraction, 0), 1) * Math.PI) * 0.45)
+        }} 
       />
+
+      {/* Central Screen Vignette - Reduces bg opacity in the horizontal and vertical center for perfect text visibility */}
       <div 
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 50% 50%, rgba(4, 9, 26, 0.42) 0%, rgba(2, 6, 18, 0.2) 60%, rgba(2, 5, 18, 0.65) 100%)' }}
+        style={{ 
+          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(4, 8, 22, 0.78) 0%, rgba(4, 8, 22, 0.45) 50%, rgba(4, 8, 22, 0.2) 100%)' 
+        }}
+      />
+
+      {/* Top and Bottom Darkening Vignettes */}
+      <div 
+        className="absolute inset-x-0 top-0 h-44 pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, rgba(3, 7, 22, 0.88) 0%, rgba(3, 7, 22, 0.4) 65%, transparent 100%)' }}
       />
       <div 
         className="absolute inset-x-0 bottom-0 h-36 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, #040816 0%, rgba(3, 8, 24, 0.6) 50%, transparent 100%)' }}
+        style={{ background: 'linear-gradient(to top, #040816 0%, rgba(3, 8, 24, 0.65) 50%, transparent 100%)' }}
       />
     </div>
   );

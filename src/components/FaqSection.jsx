@@ -1,83 +1,141 @@
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, Sparkles, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const FaqSection = ({ onRegisterClick }) => {
-  const [openIdx, setOpenIdx] = useState(0);
+  // Default open item is index 1 ([02]) just like the user's reference image
+  const [openIdx, setOpenIdx] = useState(1);
 
   const faqs = [
     {
-      q: 'Who is eligible to participate in Nexathon 2026?',
-      a: 'Nexathon is open to all enrolled undergraduate, postgraduate, and research scholars across accredited universities and technical institutions globally. Both solo researchers and teams of up to 4 members are eligible.'
+      index: '[01]',
+      q: 'WHO CAN PARTICIPATE IN NEXATHON II?',
+      a: 'Students enrolled in Engineering, B.Sc. IT, and Diploma programmes across colleges and technical institutes are eligible to participate.'
     },
     {
-      q: 'Can a team submit to both Project Presentation and Paper Presentation?',
-      a: 'Yes, teams can submit separate entries to both tracks provided the project prototype and research paper represent distinct work and are submitted via separate submission IDs.'
+      index: '[02]',
+      q: 'WHAT ARE THE COMPETITIONS, AND CAN I REGISTER FOR BOTH?',
+      a: 'Nexathon II features two flagship tracks: (1) Project Competition and (2) Paper Competition. Yes, you can register for both competitions at a discounted combined fee of ₹500.'
     },
     {
-      q: 'What format should research papers follow for submission?',
-      a: 'All research papers must strictly follow standard IEEE two-column formatting (between 4 to 6 pages in length, including references and figures). Submissions must be uploaded in PDF format with author names and affiliations clearly indicated.'
+      index: '[03]',
+      q: 'WHAT IS THE TEAM SIZE, AND CAN I PARTICIPATE INDIVIDUALLY?',
+      a: 'Project teams must have 2 to 3 members. Individual (solo) participation is allowed exclusively for the Paper Competition.'
     },
     {
-      q: 'Is there any registration fee for Nexathon 2026?',
-      a: 'No, registration for Nexathon 2026 is completely free of charge. Shortlisted finalists will receive accommodation and meal support during the grand finale weekend.'
+      index: '[04]',
+      q: 'CAN I BRING A PRE-MADE OR PRE-DEVELOPED PROJECT?',
+      a: 'Yes. Participants are welcome to bring a pre-developed or pre-made project for the Project Competition, subject to final event rules and jury verification.'
     },
     {
-      q: 'Are cross-college and multi-disciplinary teams permitted?',
-      a: 'Absolutely. We encourage interdisciplinary collaboration across departments (e.g. Computer Science, Mathematics, Electrical, Bio-informatics) and between students of different colleges or universities.'
+      index: '[05]',
+      q: 'WHAT IS THE REGISTRATION FEE?',
+      a: 'The registration fee is ₹300 for participating in one competition, or ₹500 if you register for both competitions.'
+    },
+    {
+      index: '[06]',
+      q: 'WHEN AND WHERE IS THE EVENT, AND IS IT ONLINE OR OFFLINE?',
+      a: 'Nexathon II will be held completely offline on 9 October 2026, starting from 9:00 AM onwards at Anjuman-I-Islam’s Kalsekar Technical Campus, New Panvel.'
+    },
+    {
+      index: '[07]',
+      q: 'WHAT IS THE PRIZE POOL?',
+      a: 'The overall prize pool for Nexathon II is ₹20,000+ across tracks, along with certificates, trophies, and recognition.'
+    },
+    {
+      index: '[08]',
+      q: 'IS THERE A SEPARATE QUIZ OR SHORTLISTING ROUND?',
+      a: 'The final selection process and round structure are currently to be finalized. All registered teams will receive timely schedule and evaluation updates.'
     }
   ];
 
   return (
-    <section id="faq" className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col items-center text-center scroll-mt-20">
-      {/* Station Indicator */}
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-400/30 text-pink-400 text-xs font-bold font-mono tracking-wider uppercase mb-5 backdrop-blur-xl shadow-[0_0_15px_rgba(244,114,182,0.15)]">
-        <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-        <span>LAKE STATION 05 • INQUIRIES & PORTAL</span>
+    <section 
+      id="faq" 
+      className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 py-20 md:py-28 text-left scroll-mt-20"
+    >
+      {/* FAQ Title: Pure white, clean, left-aligned, matching the reference image */}
+      <div className="w-full pb-6 border-b border-white/20">
+        <h2 className="font-['Space_Grotesk',sans-serif] font-bold text-5xl sm:text-6xl md:text-7xl text-white tracking-tight leading-none">
+          FAQ
+        </h2>
       </div>
 
-      {/* Section Title */}
-      <h2 className="font-['Outfit','Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-tight text-white mb-5 text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
-        frequently asked <br />
-        <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-400 to-amber-300">
-          questions
-        </span>
-      </h2>
-
-      <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto mb-12 text-center leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-        Everything you need to know about track eligibility, manuscript guidelines, hardware setups, and evaluation standards.
-      </p>
-
-      {/* Accordion List */}
-      <div className="w-full space-y-4 mb-20">
+      {/* Accordion List: Full width, open editorial layout with frosted glass on active */}
+      <div className="w-full divide-y divide-white/15 border-b border-white/15">
         {faqs.map((faq, idx) => {
           const isOpen = openIdx === idx;
+
           return (
-            <div
+            <div 
               key={idx}
-              className={`rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-xl ${
+              className={`w-full transition-all duration-300 ${
                 isOpen 
-                  ? 'bg-black/50 border-cyan-500/40 shadow-[0_10px_30px_rgba(0,240,255,0.1)]' 
-                  : 'bg-black/30 border-white/10 hover:border-white/20'
+                  ? 'bg-white/[0.06] backdrop-blur-2xl border-y border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] text-white' 
+                  : 'bg-transparent text-white'
               }`}
             >
+              {/* Row Header / Toggle Button */}
               <button
                 onClick={() => setOpenIdx(isOpen ? -1 : idx)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
+                className={`w-full py-6 sm:py-7 flex items-center justify-between text-left cursor-pointer transition-all duration-150 ${
+                  isOpen ? 'px-4 sm:px-8' : 'px-2 sm:px-4 hover:bg-white/[0.02]'
+                }`}
+                aria-expanded={isOpen}
               >
-                <span className="text-sm sm:text-base font-bold text-white flex items-center gap-3">
-                  <span className="text-xs font-mono text-cyan-400">0{idx + 1}</span>
-                  {faq.q}
-                </span>
-                <ChevronDown
-                  className={`w-5 h-5 text-zinc-400 transition-transform duration-300 flex-shrink-0 ${
-                    isOpen ? 'rotate-180 text-cyan-400' : ''
-                  }`}
-                />
+                {/* Left Side: [01] Index & Question */}
+                <div className="flex items-center gap-4 sm:gap-8 flex-1 pr-4">
+                  <span className={`font-mono text-xs sm:text-sm shrink-0 select-none ${
+                    isOpen ? 'text-cyan-400 font-semibold' : 'text-zinc-500'
+                  }`}>
+                    {faq.index}
+                  </span>
+                  <span className="font-bold text-sm sm:text-base md:text-lg tracking-wide uppercase leading-snug text-white">
+                    {faq.q}
+                  </span>
+                </div>
+
+                {/* Right Side: Diagonal Arrow Icon */}
+                <div className="shrink-0 ml-2">
+                  {isOpen ? (
+                    // Pointing Up-Right ↗ (Expanded in frosted glass card)
+                    <svg 
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-white" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="1.75" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  ) : (
+                    // Pointing Down-Right ↘ (Collapsed in dark mode)
+                    <svg 
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-zinc-400 group-hover:text-white" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="1.75" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <line x1="7" y1="7" x2="17" y2="17" />
+                      <polyline points="17 7 17 7 17 17" />
+                    </svg>
+                  )}
+                </div>
               </button>
 
+              {/* Answer Content (Visible only when expanded inside the glass card) */}
               {isOpen && (
-                <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/5">
-                  {faq.a}
+                <div className="px-4 sm:px-8 pb-8 pt-0 animate-fadeIn">
+                  <div className="sm:pl-12 md:pl-14 max-w-4xl">
+                    <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
+                      {faq.a}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
@@ -85,28 +143,23 @@ const FaqSection = ({ onRegisterClick }) => {
         })}
       </div>
 
-      {/* Grand Call to Action Banner Glowing in the Lake Flow */}
-      <div className="w-full relative rounded-3xl p-10 sm:p-14 bg-gradient-to-r from-cyan-950/60 via-black/70 to-pink-950/60 border border-white/15 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] text-center flex flex-col items-center overflow-hidden">
-        {/* Glow Spheres */}
-        <div className="absolute -top-24 left-1/4 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 right-1/4 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl pointer-events-none" />
-
-        <span className="text-xs font-mono tracking-widest text-cyan-400 font-bold uppercase mb-3">
-          SECURE YOUR BENCH AT NEXATHON 2026
-        </span>
-        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-          ready to shape the future of technology?
-        </h3>
-        <p className="text-zinc-300 text-xs sm:text-base max-w-xl mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-          Join hundreds of elite engineers, AI innovators, and research scholars on national stage.
-        </p>
+      {/* Bottom Full-Width Registration Banner */}
+      <div className="mt-16 sm:mt-20 w-full rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_12px_40px_rgba(0,0,0,0.6)]">
+        <div>
+          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2">
+            Ready to exhibit your research or engineering prototype?
+          </h3>
+          <p className="text-xs sm:text-sm text-zinc-400 max-w-xl">
+            Register for Paper Presentation or Project Presentation at Nexathon II. Submissions are open.
+          </p>
+        </div>
 
         <button
           onClick={onRegisterClick}
-          className="text-sm sm:text-base py-3.5 px-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold flex items-center gap-2 shadow-[0_0_25px_rgba(255,119,0,0.55),inset_0_1px_0_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+          className="shrink-0 px-8 py-3.5 rounded-full bg-white text-slate-950 font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-zinc-200 transition-all shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
         >
-          <span>Register Your Submission</span>
-          <ArrowUpRight className="w-5 h-5" />
+          <span>Register Now</span>
+          <ArrowUpRight className="w-4 h-4" />
         </button>
       </div>
     </section>
