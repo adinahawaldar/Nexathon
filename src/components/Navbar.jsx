@@ -18,9 +18,6 @@ const Navbar = ({ onRegisterClick }) => {
           <a href="#hero" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
             overview
           </a>
-          <a href="#about" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
-            about
-          </a>
           <a href="#tracks" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
             tracks
           </a>
@@ -88,15 +85,6 @@ const Navbar = ({ onRegisterClick }) => {
             >
               <span>Overview</span>
               <Shield className="w-4 h-4 text-orange-400" />
-            </a>
-
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="text-zinc-200 hover:text-cyan-300 py-2.5 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between font-medium text-sm transition-colors"
-            >
-              <span>About Nexathon</span>
-              <Presentation className="w-4 h-4 text-cyan-400" />
             </a>
 
             <a 

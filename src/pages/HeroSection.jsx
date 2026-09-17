@@ -10,13 +10,12 @@ import canvasConfetti from 'canvas-confetti';
 import ScrollyLakeBackground from '../components/ScrollyLakeBackground';
 import Navbar from '../components/Navbar';
 import RubiksCountdownSection from '../components/RubiksCountdownSection';
-import AboutSection from '../components/AboutSection';
 import TracksSection from '../components/TracksSection';
 import PrizesSection from '../components/PrizesSection';
 import TimelineSection from '../components/TimelineSection';
 import FaqSection from '../components/FaqSection';
 
-const HeroSection = () => {
+const HeroSection = ({ onKnowMore }) => {
   const [activeTab, setActiveTab] = useState('project'); // 'project' | 'paper'
   const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,7 +37,7 @@ const HeroSection = () => {
   };
 
   const handleDiscoverEvent = () => {
-    const el = document.getElementById('countdown') || document.getElementById('about');
+    const el = document.getElementById('countdown') || document.getElementById('tracks');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -71,78 +70,90 @@ const HeroSection = () => {
       {/* ========================================================================= */}
       {/* 1. HERO STAGE • THE ENTRANCE PORTAL */}
       {/* ========================================================================= */}
-      <section id="hero" className="relative z-10 max-w-7xl w-full mx-auto min-h-screen pt-24 sm:pt-28 pb-16 px-4 sm:px-6 flex flex-col items-center justify-center text-center">
+      <section id="hero" className="relative z-10 max-w-7xl w-full mx-auto min-h-screen pt-20 pb-20 px-4 sm:px-6 flex flex-col items-center justify-center text-center">
 
-        {/* Subtle Ambient Depth Scrim (No box, seamless gradient fade) */}
-        <div className="absolute inset-0 max-w-4xl mx-auto -z-10 pointer-events-none flex items-center justify-center">
-          <div className="w-[740px] h-[400px] bg-gradient-to-b from-[#020510]/80 via-[#03091e]/50 to-transparent rounded-full blur-3xl" />
+        {/* Seamless Radial Backdrop Blur & Soft Vignette (100% borderless, NO box, feathered blur strictly behind text) */}
+        <div className="absolute inset-0 max-w-6xl mx-auto -z-10 pointer-events-none flex items-center justify-center overflow-visible">
+          {/* Feathered Radial Backdrop Blur: blurs the background only under the text without any box edges */}
+          <div 
+            className="w-[1050px] h-[620px] max-w-full pointer-events-none"
+            style={{
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              background: 'radial-gradient(ellipse 60% 50% at 50% 48%, rgba(2, 6, 20, 0.72) 0%, rgba(2, 6, 20, 0.45) 45%, rgba(2, 6, 20, 0) 80%)',
+              maskImage: 'radial-gradient(ellipse 58% 48% at 50% 48%, black 30%, transparent 80%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 58% 48% at 50% 48%, black 30%, transparent 80%)'
+            }}
+          />
+          {/* Subtle central depth glow */}
+          <div className="absolute w-[700px] h-[350px] bg-cyan-950/30 rounded-full blur-3xl -z-10 pointer-events-none" />
         </div>
 
-        {/* Massive Display Title (Clean, NO Box) */}
+        {/* Massive Display Title (Bold and Grand on Mobile & Desktop) */}
         <h1 
-          className="font-black text-center mb-4 uppercase select-none max-w-full text-transparent bg-clip-text"
+          className="font-black text-center mb-3 sm:mb-4 uppercase select-none max-w-full text-transparent bg-clip-text px-2"
           style={{
             fontFamily: "'Oxanium', 'Orbitron', sans-serif",
-            fontSize: 'clamp(2.3rem, 7.8vw, 7.5rem)',
-            lineHeight: '0.95',
-            letterSpacing: 'clamp(0.01em, 0.5vw, 0.025em)',
+            fontSize: 'clamp(3.3rem, 13.8vw, 8.8rem)',
+            lineHeight: '0.92',
+            letterSpacing: 'clamp(0.01em, 0.4vw, 0.025em)',
             backgroundImage: 'linear-gradient(180deg, #ffffff 0%, #e8faff 28%, #30d8f7 58%, #009be6 82%, #005799 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 3px 1px #0088cc) drop-shadow(0 6px 3px #01356b) drop-shadow(0 12px 24px rgba(0,0,0,0.95)) drop-shadow(0 20px 45px rgba(0,0,0,0.9)) drop-shadow(0 0 25px rgba(0,229,255,0.7)) drop-shadow(0 0 60px rgba(0,140,255,0.4))'
+            filter: 'drop-shadow(0 3px 1px #0088cc) drop-shadow(0 5px 2px #01356b) drop-shadow(0 10px 20px rgba(0,0,0,0.85)) drop-shadow(0 16px 36px rgba(0,0,0,0.75)) drop-shadow(0 0 25px rgba(0,229,255,0.6)) drop-shadow(0 0 50px rgba(0,140,255,0.35))'
           }}
         >
           <span>NEXATHON</span>
         </h1>
 
-        {/* Sub-description Paragraph (Clean, NO Box) */}
-        <p className="text-zinc-200 text-sm sm:text-base md:text-lg max-w-2xl text-center leading-relaxed font-normal mb-8 sm:mb-10 px-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+        {/* Sub-description Paragraph (Normal Clean Text, NO Box) */}
+        <p className="text-zinc-100 text-xs sm:text-base md:text-lg max-w-2xl text-center leading-relaxed font-medium mb-6 sm:mb-8 px-4 drop-shadow-[0_2px_12px_rgba(0,0,0,1)] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
           Empowering innovators, software engineers &amp; researchers with national tech excellence.
         </p>
 
-        {/* Stats Callouts Row (Clean, Floating with Dividers, Responsive, NO Box) */}
-        <div className="flex flex-row items-center justify-center gap-4 sm:gap-14 w-full max-w-xl mx-auto mb-8 sm:mb-10 text-center px-4">
+        {/* Stats Callouts Row (Normal Clean Floating with Dividers, NO Box) */}
+        <div className="flex flex-row items-center justify-center gap-3 sm:gap-14 w-full max-w-xl mx-auto mb-6 sm:mb-8 text-center px-4">
           <div className="flex flex-col items-center flex-1 sm:flex-initial">
-            <span className="text-[clamp(1.4rem,2.8vw,2.5rem)] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 drop-shadow-[0_0_20px_rgba(251,146,60,0.5)]">
+            <span className="text-[clamp(1.25rem,2.8vw,2.5rem)] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 drop-shadow-[0_0_20px_rgba(251,146,60,0.5)]">
               ₹20,000+
             </span>
-            <span className="text-zinc-300 font-mono tracking-wider font-semibold uppercase text-[10px] sm:text-xs mt-1.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap">
+            <span className="text-zinc-300 font-mono tracking-wider font-semibold uppercase text-[9px] sm:text-xs mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap">
               total prize pool
             </span>
           </div>
-          <div className="w-[1px] h-9 sm:h-10 bg-white/20 flex-shrink-0" />
+          <div className="w-[1px] h-7 sm:h-10 bg-white/20 flex-shrink-0" />
           <div className="flex flex-col items-center flex-1 sm:flex-initial">
-            <span className="text-[clamp(1.4rem,2.8vw,2.5rem)] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 drop-shadow-[0_0_20px_rgba(56,189,248,0.5)]">
+            <span className="text-[clamp(1.25rem,2.8vw,2.5rem)] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 drop-shadow-[0_0_20px_rgba(56,189,248,0.5)]">
               15+
             </span>
-            <span className="text-zinc-300 font-mono tracking-wider font-semibold uppercase text-[10px] sm:text-xs mt-1.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap">
+            <span className="text-zinc-300 font-mono tracking-wider font-semibold uppercase text-[9px] sm:text-xs mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap">
               universities
             </span>
           </div>
-          <div className="w-[1px] h-9 sm:h-10 bg-white/20 flex-shrink-0" />
+          <div className="w-[1px] h-7 sm:h-10 bg-white/20 flex-shrink-0" />
           <div className="flex flex-col items-center flex-1 sm:flex-initial">
-            <span className="text-[clamp(1.4rem,2.8vw,2.5rem)] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 drop-shadow-[0_0_20px_rgba(52,211,153,0.5)]">
+            <span className="text-[clamp(1.25rem,2.8vw,2.5rem)] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 drop-shadow-[0_0_20px_rgba(52,211,153,0.5)]">
               50+
             </span>
-            <span className="text-zinc-300 font-mono tracking-wider font-semibold uppercase text-[10px] sm:text-xs mt-1.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap">
+            <span className="text-zinc-300 font-mono tracking-wider font-semibold uppercase text-[9px] sm:text-xs mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap">
               registrations
             </span>
           </div>
         </div>
 
-        {/* Discover the Event CTA - Proper Premium Cyber Button with Pure Tailwind CSS */}
-        <div className="relative inline-flex items-center justify-center mt-8 mb-4 group mx-auto z-20">
-          <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-600 opacity-75 group-hover:opacity-100 blur-xl transition-all duration-500 animate-pulse pointer-events-none" />
-          <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-300 via-teal-300 to-blue-400 opacity-50 blur-sm pointer-events-none" />
+        {/* Discover the Event CTA - Sleek Minimal on Mobile, Full on Desktop */}
+        <div className="relative inline-flex items-center justify-center mt-3 sm:mt-4 mb-2 group mx-auto z-20">
+          <div className="absolute -inset-1 sm:-inset-1.5 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-600 opacity-70 group-hover:opacity-100 blur-md sm:blur-xl transition-all duration-500 animate-pulse pointer-events-none" />
+          <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-300 via-teal-300 to-blue-400 opacity-40 blur-xs sm:blur-sm pointer-events-none" />
           
           <button
             id="discover-event-btn"
             onClick={handleDiscoverEvent}
-            className="relative inline-flex items-center gap-3.5 px-9 sm:px-12 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:via-sky-300 hover:to-blue-400 text-slate-950 font-extrabold text-xs sm:text-sm tracking-wider uppercase border border-white/60 shadow-[0_0_35px_rgba(0,240,255,0.7),0_12px_28px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.8)] hover:shadow-[0_0_55px_rgba(0,240,255,0.95),0_16px_36px_rgba(0,0,0,0.9)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
+            className="relative inline-flex items-center gap-2 sm:gap-3.5 px-5 sm:px-12 py-2.5 sm:py-4 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:via-sky-300 hover:to-blue-400 text-slate-950 font-extrabold text-[11px] sm:text-sm tracking-wider uppercase border border-white/60 shadow-[0_0_20px_rgba(0,240,255,0.6),0_6px_16px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.8)] sm:shadow-[0_0_35px_rgba(0,240,255,0.7),0_12px_28px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.8)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
           >
             <span>Discover the Event</span>
-            <div className="w-7 h-7 rounded-full bg-black/15 flex items-center justify-center text-slate-950 transition-transform group-hover:translate-y-1">
-              <ChevronDown className="w-4 h-4 stroke-[2.5]" />
+            <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black/15 flex items-center justify-center text-slate-950 transition-transform group-hover:translate-y-0.5 sm:group-hover:translate-y-1">
+              <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 stroke-[2.5]" />
             </div>
           </button>
         </div>
@@ -155,17 +166,12 @@ const HeroSection = () => {
       <RubiksCountdownSection onRegisterClick={() => handleOpenRegistration(activeTab)} />
 
       {/* ========================================================================= */}
-      {/* 3. LAKE STATION 01 • ABOUT NEXATHON */}
+      {/* 3. COMPETITION TRACKS (PROJECT & PAPER PRESENTATION) */}
       {/* ========================================================================= */}
-      <AboutSection onExploreTracks={() => {
-        const el = document.getElementById('tracks');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }} />
-
-      {/* ========================================================================= */}
-      {/* 3. LAKE STATION 02 • COMPETITION TRACKS (PROJECT & PAPER PRESENTATION) */}
-      {/* ========================================================================= */}
-      <TracksSection onRegisterTrack={(trackId) => handleOpenRegistration(trackId)} />
+      <TracksSection 
+        onRegisterTrack={(trackId) => handleOpenRegistration(trackId)} 
+        onKnowMore={onKnowMore}
+      />
 
       {/* ========================================================================= */}
       {/* 4. LAKE STATION 03 • PRIZE POOL & REWARDS */}

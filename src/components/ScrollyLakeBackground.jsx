@@ -164,7 +164,7 @@ const ScrollyLakeBackground = () => {
           src={scene1} 
           alt="Scene 1 - Hero Lake Entrance" 
           className="w-full h-full object-cover object-center" 
-          style={{ filter: 'brightness(0.92) contrast(1.06)' }}
+          style={{ filter: 'brightness(0.78) contrast(1.08)' }}
         />
       </div>
 

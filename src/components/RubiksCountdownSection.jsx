@@ -1,56 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { Timer, Sparkles, ArrowUpRight, CheckCircle2, ShieldAlert } from 'lucide-react';
 
-const RubiksCountdownSection = ({ onRegisterClick }) => {
+const RubiksCountdownSection = () => {
   const mountRef = useRef(null);
+  const [isSolved, setIsSolved] = useState(true);
 
-  // Target: October 7, 2026 23:59:59
-  const targetDate = new Date('2026-10-07T23:59:59').getTime();
-
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  const [isSolved, setIsSolved] = useState(false);
-
-  // Countdown timer calculation
-  useEffect(() => {
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
-  }, [targetDate]);
-
-  // Three.js Interactive 3D Rubik's Cube
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
 
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = container.clientWidth || 800;
+    const height = container.clientHeight || 560;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
-    camera.position.set(4.5, 3.8, 5.8);
+    camera.position.set(0, 0.4, 7.2);
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -58,82 +22,212 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    // Studio Lighting for sleek cyber reflections
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
 
-    const pointLight1 = new THREE.PointLight(0x00f0ff, 3, 20);
-    pointLight1.position.set(5, 5, 5);
-    scene.add(pointLight1);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+    keyLight.position.set(5, 8, 8);
+    scene.add(keyLight);
 
-    const pointLight2 = new THREE.PointLight(0xff7700, 2.5, 20);
-    pointLight2.position.set(-5, -3, -5);
-    scene.add(pointLight2);
+    const cyanGlow = new THREE.PointLight(0x00f0ff, 3.5, 25);
+    cyanGlow.position.set(-6, 3, 5);
+    scene.add(cyanGlow);
 
-    const pointLight3 = new THREE.PointLight(0xf472b6, 2, 20);
-    pointLight3.position.set(0, 6, -3);
-    scene.add(pointLight3);
+    const orangeGlow = new THREE.PointLight(0xff7700, 3, 25);
+    orangeGlow.position.set(6, -3, 5);
+    scene.add(orangeGlow);
 
-    // Main rotating group
+    const backRim = new THREE.PointLight(0x38bdf8, 2.5, 20);
+    backRim.position.set(0, 5, -6);
+    scene.add(backRim);
+
+    // Master rotating group
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
-    // Cube dimensions
-    const CUBE_SIZE = 0.95;
-    const SPACING = 1.02;
+    // -------------------------------------------------------------
+    // CREATE FRONT FACE TEXTURE TILES ("REGISTRATION CLOSING ON 7TH OCTOBER")
+    // -------------------------------------------------------------
+    // Master 1024x1024 canvas that renders the message with neon cyber styling
+    const masterCanvas = document.createElement('canvas');
+    masterCanvas.width = 1024;
+    masterCanvas.height = 1024;
+    const mCtx = masterCanvas.getContext('2d');
+
+    // Gradient cyber background
+    const bgGrad = mCtx.createLinearGradient(0, 0, 1024, 1024);
+    bgGrad.addColorStop(0, '#04091a');
+    bgGrad.addColorStop(0.5, '#07132e');
+    bgGrad.addColorStop(1, '#020512');
+    mCtx.fillStyle = bgGrad;
+    mCtx.fillRect(0, 0, 1024, 1024);
+
+    // Micro grid lines
+    mCtx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+    mCtx.lineWidth = 2;
+    for (let i = 0; i <= 1024; i += 64) {
+      mCtx.beginPath();
+      mCtx.moveTo(i, 0); mCtx.lineTo(i, 1024);
+      mCtx.stroke();
+      mCtx.beginPath();
+      mCtx.moveTo(0, i); mCtx.lineTo(1024, i);
+      mCtx.stroke();
+    }
+
+    // Individual tile border insets to simulate physical Rubik's stickers
+    const tileSize = 1024 / 3;
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 3; c++) {
+        mCtx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+        mCtx.fillRect(c * tileSize + 10, r * tileSize + 10, tileSize - 20, tileSize - 20);
+
+        mCtx.strokeStyle = 'rgba(0, 240, 255, 0.35)';
+        mCtx.lineWidth = 4;
+        mCtx.strokeRect(c * tileSize + 10, r * tileSize + 10, tileSize - 20, tileSize - 20);
+
+        // Corner accents on each tile
+        mCtx.fillStyle = '#00f0ff';
+        mCtx.fillRect(c * tileSize + 10, r * tileSize + 10, 12, 4);
+        mCtx.fillRect(c * tileSize + 10, r * tileSize + 10, 4, 12);
+      }
+    }
+
+    mCtx.textAlign = 'center';
+    mCtx.textBaseline = 'middle';
+
+    // ROW 1 (Top): "REGISTRATION"
+    mCtx.save();
+    mCtx.font = '900 78px "Oxanium", "Orbitron", "Space Grotesk", sans-serif';
+    mCtx.shadowColor = 'rgba(0, 240, 255, 0.9)';
+    mCtx.shadowBlur = 30;
+    mCtx.fillStyle = '#ffffff';
+    mCtx.fillText('REGISTRATION', 512, tileSize * 0.5);
+    mCtx.restore();
+
+    // ROW 2 (Middle): "CLOSING ON"
+    mCtx.save();
+    mCtx.font = '900 74px "Oxanium", "Orbitron", "Space Grotesk", sans-serif';
+    mCtx.shadowColor = 'rgba(255, 136, 0, 0.95)';
+    mCtx.shadowBlur = 30;
+    mCtx.fillStyle = '#ffaa33';
+    mCtx.fillText('CLOSING ON', 512, tileSize * 1.5);
+    mCtx.restore();
+
+    // ROW 3 (Bottom): "7TH OCTOBER"
+    mCtx.save();
+    mCtx.font = '900 86px "Oxanium", "Orbitron", "Space Grotesk", sans-serif';
+    mCtx.shadowColor = 'rgba(0, 240, 255, 1)';
+    mCtx.shadowBlur = 35;
+    mCtx.fillStyle = '#00f0ff';
+    mCtx.fillText('7TH OCTOBER', 512, tileSize * 2.5);
+    mCtx.restore();
+
+    // Sliced textures map: key `${col}_${row}`
+    const frontTextures = {};
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 3; c++) {
+        const tileCanvas = document.createElement('canvas');
+        tileCanvas.width = 512;
+        tileCanvas.height = 512;
+        const tCtx = tileCanvas.getContext('2d');
+        tCtx.drawImage(
+          masterCanvas,
+          c * tileSize,
+          r * tileSize,
+          tileSize,
+          tileSize,
+          0,
+          0,
+          512,
+          512
+        );
+        const tex = new THREE.CanvasTexture(tileCanvas);
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        frontTextures[`${c}_${r}`] = tex;
+      }
+    }
+
+    // -------------------------------------------------------------
+    // BUILD 3X3 CUBIES
+    // -------------------------------------------------------------
+    const CUBE_SIZE = 0.96;
+    const SPACING = 1.04;
     const cubies = [];
 
-    // Face colors: Right(Cyan), Left(Pink), Top(Amber), Bottom(Blue), Front(Orange), Back(White)
+    // Face standard colors: Right(Cyan), Left(Pink), Top(Amber), Bottom(Blue), Front(Textured), Back(White)
     const faceColors = [
       0x00f0ff, // Right (+X)
       0xf472b6, // Left (-X)
       0xfbbf24, // Top (+Y)
       0x3b82f6, // Bottom (-Y)
-      0xff6b00, // Front (+Z)
-      0xffffff  // Back (-Z)
+      0xff7700, // Front (+Z fallback)
+      0xe2e8f0  // Back (-Z)
     ];
 
-    const innerCoreColor = 0x050814;
+    const innerCoreColor = 0x070c1a;
 
     for (let x = -1; x <= 1; x++) {
       for (let y = -1; y <= 1; y++) {
         for (let z = -1; z <= 1; z++) {
+          // Determine front tile texture if z === 1
+          let frontMaterial;
+          if (z === 1) {
+            const col = x + 1; // 0, 1, 2
+            const row = 1 - y; // y=1 -> row 0, y=0 -> row 1, y=-1 -> row 2
+            const tex = frontTextures[`${col}_${row}`];
+            frontMaterial = new THREE.MeshStandardMaterial({
+              map: tex,
+              roughness: 0.15,
+              metalness: 0.6,
+              emissive: 0x002233,
+              emissiveMap: tex
+            });
+          } else {
+            frontMaterial = new THREE.MeshStandardMaterial({
+              color: innerCoreColor,
+              roughness: 0.2,
+              metalness: 0.8
+            });
+          }
+
           const materials = [
+            // Right (+X)
             new THREE.MeshStandardMaterial({
               color: x === 1 ? faceColors[0] : innerCoreColor,
               roughness: 0.15,
-              metalness: 0.85,
+              metalness: 0.7,
               emissive: x === 1 ? 0x003344 : 0x000000
             }),
+            // Left (-X)
             new THREE.MeshStandardMaterial({
               color: x === -1 ? faceColors[1] : innerCoreColor,
               roughness: 0.15,
-              metalness: 0.85,
+              metalness: 0.7,
               emissive: x === -1 ? 0x330022 : 0x000000
             }),
+            // Top (+Y)
             new THREE.MeshStandardMaterial({
               color: y === 1 ? faceColors[2] : innerCoreColor,
               roughness: 0.15,
-              metalness: 0.85,
+              metalness: 0.7,
               emissive: y === 1 ? 0x332200 : 0x000000
             }),
+            // Bottom (-Y)
             new THREE.MeshStandardMaterial({
               color: y === -1 ? faceColors[3] : innerCoreColor,
               roughness: 0.15,
-              metalness: 0.85,
+              metalness: 0.7,
               emissive: y === -1 ? 0x001144 : 0x000000
             }),
-            new THREE.MeshStandardMaterial({
-              color: z === 1 ? faceColors[4] : innerCoreColor,
-              roughness: 0.15,
-              metalness: 0.85,
-              emissive: z === 1 ? 0x441500 : 0x000000
-            }),
+            // Front (+Z)
+            frontMaterial,
+            // Back (-Z)
             new THREE.MeshStandardMaterial({
               color: z === -1 ? faceColors[5] : innerCoreColor,
               roughness: 0.15,
-              metalness: 0.85,
-              emissive: z === -1 ? 0x222222 : 0x000000
+              metalness: 0.7,
+              emissive: z === -1 ? 0x111111 : 0x000000
             })
           ];
 
@@ -151,7 +245,12 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
       }
     }
 
-    // Interactive mouse drag
+    // Set initial viewing angle so the front face with text is facing the user with slight 3D perspective
+    mainGroup.rotation.set(0.08, 0, 0);
+
+    // -------------------------------------------------------------
+    // CLEAN 2-3 ROTATION SOLVE ON SCROLL (NO MESSY SLICES)
+    // -------------------------------------------------------------
     let isDragging = false;
     let prevMouseX = 0;
     let prevMouseY = 0;
@@ -181,46 +280,85 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mouseup', onMouseUp);
 
-    // Animation: Scrambling & Solving Cycle
-    let animClock = 0;
+    // Smooth Spin State
+    let isSpinning = false;
+    let spinStartTime = 0;
+    let spinStartAngle = 0;
+    let spinTargetAngle = 0;
+    const SPIN_DURATION = 2300; // ~2.3 seconds
+
+    const triggerSpin = (direction = 1) => {
+      if (isDragging) return;
+      spinStartTime = performance.now();
+      spinStartAngle = mainGroup.rotation.y;
+      // Rotate 2 full rotations (4 * PI) in the direction of the scroll
+      const rotations = 2;
+      const targetDelta = direction * rotations * Math.PI * 2;
+      spinTargetAngle = Math.round((spinStartAngle + targetDelta) / (Math.PI * 2)) * (Math.PI * 2);
+      isSpinning = true;
+      setIsSolved(false);
+    };
+
+    // Trigger on scroll up or down
+    let lastScrollY = window.scrollY;
+    let scrollThrottleTimeout = null;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
+
+      if (Math.abs(delta) < 5) return;
+
+      if (!isSpinning) {
+        const dir = delta >= 0 ? 1 : -1;
+        triggerSpin(dir);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Initial demonstration spin on page load
+    setTimeout(() => {
+      triggerSpin(1);
+    }, 500);
+
+    // Animation Loop
+    let clock = 0;
     let animationFrameId;
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      animClock += 0.016;
+      clock += 0.016;
 
-      // Gentle global rotation
-      if (!isDragging) {
-        mainGroup.rotation.y += 0.008;
-        mainGroup.rotation.x = Math.sin(animClock * 0.5) * 0.2 + 0.2;
-      }
+      if (isSpinning && !isDragging) {
+        const elapsed = performance.now() - spinStartTime;
+        const progress = Math.min(elapsed / SPIN_DURATION, 1);
 
-      // Cycle: 0 to 6s = twist/scramble phase, 6s to 12s = solve sequence, 12s to 16s = locked solved celebration
-      const cycleTime = animClock % 16;
+        // Smooth cubic ease-out deceleration
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        mainGroup.rotation.y = spinStartAngle + (spinTargetAngle - spinStartAngle) * easeOut;
 
-      if (cycleTime < 6) {
-        // Scrambling / unmade twisting phase
-        const layerIdx = Math.floor((animClock * 1.5) % 3) - 1;
-        cubies.forEach(cubie => {
-          if (cubie.userData.grid.y === layerIdx) {
-            cubie.rotation.y += 0.04;
-          }
-        });
-        setIsSolved(false);
-      } else if (cycleTime < 11) {
-        // Solving phase: smoothly lerp back to aligned identity rotations
-        cubies.forEach(cubie => {
-          cubie.rotation.y = THREE.MathUtils.lerp(cubie.rotation.y, 0, 0.08);
-          cubie.rotation.x = THREE.MathUtils.lerp(cubie.rotation.x, 0, 0.08);
-          cubie.rotation.z = THREE.MathUtils.lerp(cubie.rotation.z, 0, 0.08);
-        });
-        setIsSolved(false);
-      } else {
-        // Fully Solved State!
-        cubies.forEach(cubie => {
-          cubie.rotation.set(0, 0, 0);
-        });
-        setIsSolved(true);
+        // Subtle dynamic 3D tilt during spin that settles to 0.08 at the finish
+        const tiltWobble = Math.sin(progress * Math.PI) * 0.22;
+        mainGroup.rotation.x = 0.08 + tiltWobble;
+        mainGroup.rotation.z = Math.sin(progress * Math.PI * 2) * 0.05 * (1 - progress);
+
+        if (progress >= 1) {
+          mainGroup.rotation.y = spinTargetAngle;
+          mainGroup.rotation.x = 0.08;
+          mainGroup.rotation.z = 0;
+          isSpinning = false;
+          setIsSolved(true);
+        }
+      } else if (!isDragging) {
+        // Gentle ambient floating breathing while solved
+        mainGroup.position.y = Math.sin(clock * 1.5) * 0.08;
+        // Keep front face squarely locked
+        const snappedY = Math.round(mainGroup.rotation.y / (Math.PI * 2)) * (Math.PI * 2);
+        mainGroup.rotation.y = THREE.MathUtils.lerp(mainGroup.rotation.y, snappedY, 0.08);
+        mainGroup.rotation.x = THREE.MathUtils.lerp(mainGroup.rotation.x, 0.08, 0.08);
+        mainGroup.rotation.z = THREE.MathUtils.lerp(mainGroup.rotation.z, 0, 0.08);
       }
 
       renderer.render(scene, camera);
@@ -245,6 +383,7 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
       if (container && renderer.domElement) {
         container.removeChild(renderer.domElement);
       }
@@ -253,133 +392,15 @@ const RubiksCountdownSection = ({ onRegisterClick }) => {
   }, []);
 
   return (
-    <section id="countdown" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 flex flex-col items-center scroll-mt-20">
-      {/* Station Badge */}
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-mono mb-4 backdrop-blur-md">
-        <Timer className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-        <span className="tracking-wider uppercase">REGISTRATION COUNTDOWN • CLOSING OCTOBER 7TH</span>
-      </div>
-
-      {/* Title */}
-      <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white text-center tracking-tight mb-4">
-        solve the challenge. <br />
-        <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-cyan-400 bg-clip-text text-transparent">
-          registrations end on 7th october
-        </span>
-      </h2>
-
-      <p className="text-zinc-300 text-sm sm:text-base max-w-2xl text-center leading-relaxed mb-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-        Every great algorithm starts with unstructured chaos before finding optimal resolution. 
-        Watch the cube solve in real-time as the clock counts down to the national submission deadline.
-      </p>
-
-      {/* Main Grid: 3D Rubik's Cube on Left, Live Countdown on Right */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-black/45 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 sm:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
-        
-        {/* Left Column: Interactive 3D Rubik's Canvas */}
-        <div className="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[380px] sm:min-h-[440px]">
-          {/* Status Chip */}
-          <div className="absolute top-2 left-2 z-10 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-white/15 text-[11px] font-mono backdrop-blur-md">
-            <span className={`w-2 h-2 rounded-full ${isSolved ? 'bg-emerald-400 animate-ping' : 'bg-orange-400 animate-pulse'}`} />
-            <span className={isSolved ? 'text-emerald-300 font-bold' : 'text-orange-300'}>
-              {isSolved ? 'STATUS: SOLVED & ALIGNED' : 'STATUS: ALGORITHM OPTIMIZING...'}
-            </span>
-          </div>
-
-          <div className="absolute bottom-2 text-zinc-500 text-[11px] font-mono tracking-wider pointer-events-none">
-            DRAG TO ROTATE 3D CUBE IN REALTIME
-          </div>
-
-          {/* Canvas Mount */}
-          <div ref={mountRef} className="w-full h-[380px] sm:h-[440px] cursor-grab active:cursor-grabbing" />
-        </div>
-
-        {/* Right Column: Live Countdown Digits & Call to Action */}
-        <div className="lg:col-span-6 flex flex-col justify-center text-left space-y-8">
-          
-          <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold">
-              OFFICIAL SUBMISSION COUNTDOWN
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mt-1">
-              October 7, 2026 • 23:59 IST
-            </h3>
-            <p className="text-xs sm:text-sm text-zinc-400 mt-2">
-              All abstract submissions, team confirmations, and track selections must be finalized prior to lock date.
-            </p>
-          </div>
-
-          {/* 4 Glowing Digital Counters */}
-          <div className="grid grid-cols-4 gap-3 sm:gap-4 text-center">
-            {/* Days */}
-            <div className="flex flex-col items-center p-3.5 sm:p-5 rounded-2xl bg-black/60 border border-cyan-500/30 backdrop-blur-xl shadow-[0_0_20px_rgba(0,240,255,0.15)]">
-              <span className="text-2xl sm:text-4xl font-extrabold font-mono text-cyan-400">
-                {String(timeLeft.days).padStart(2, '0')}
-              </span>
-              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-zinc-400 mt-1">
-                DAYS
-              </span>
-            </div>
-
-            {/* Hours */}
-            <div className="flex flex-col items-center p-3.5 sm:p-5 rounded-2xl bg-black/60 border border-orange-500/30 backdrop-blur-xl shadow-[0_0_20px_rgba(255,119,0,0.15)]">
-              <span className="text-2xl sm:text-4xl font-extrabold font-mono text-orange-400">
-                {String(timeLeft.hours).padStart(2, '0')}
-              </span>
-              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-zinc-400 mt-1">
-                HOURS
-              </span>
-            </div>
-
-            {/* Minutes */}
-            <div className="flex flex-col items-center p-3.5 sm:p-5 rounded-2xl bg-black/60 border border-pink-500/30 backdrop-blur-xl shadow-[0_0_20px_rgba(244,114,182,0.15)]">
-              <span className="text-2xl sm:text-4xl font-extrabold font-mono text-pink-400">
-                {String(timeLeft.minutes).padStart(2, '0')}
-              </span>
-              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-zinc-400 mt-1">
-                MINUTES
-              </span>
-            </div>
-
-            {/* Seconds */}
-            <div className="flex flex-col items-center p-3.5 sm:p-5 rounded-2xl bg-black/60 border border-amber-500/30 backdrop-blur-xl shadow-[0_0_20px_rgba(251,191,36,0.15)]">
-              <span className="text-2xl sm:text-4xl font-extrabold font-mono text-amber-400">
-                {String(timeLeft.seconds).padStart(2, '0')}
-              </span>
-              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-zinc-400 mt-1">
-                SECONDS
-              </span>
-            </div>
-          </div>
-
-          {/* Quick Perks Checklist */}
-          <div className="space-y-2 pt-2 border-t border-white/10">
-            <div className="flex items-center gap-2.5 text-xs text-zinc-300">
-              <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-              <span>Direct entry to both Project and Paper presentation tracks</span>
-            </div>
-            <div className="flex items-center gap-2.5 text-xs text-zinc-300">
-              <CheckCircle2 className="w-4 h-4 text-orange-400 flex-shrink-0" />
-              <span>Full eligibility for the ₹20,000+ national prize pool</span>
-            </div>
-            <div className="flex items-center gap-2.5 text-xs text-zinc-300">
-              <CheckCircle2 className="w-4 h-4 text-pink-400 flex-shrink-0" />
-              <span>Certificate of national participation for all team members</span>
-            </div>
-          </div>
-
-          {/* Action CTA */}
-          <button
-            onClick={onRegisterClick}
-            className="w-full sm:w-auto self-start py-3.5 px-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white flex items-center justify-center gap-3 text-sm font-bold shadow-[0_0_30px_rgba(255,119,0,0.55),inset_0_1px_0_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-transform cursor-pointer"
-          >
-            <span>CONFIRM YOUR REGISTRATION BEFORE OCT 7TH</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
-
-        </div>
-
-      </div>
+    <section 
+      id="countdown" 
+      className="relative z-10 w-full max-w-5xl mx-auto min-h-[540px] sm:min-h-[620px] flex flex-col items-center justify-center py-8 px-4 scroll-mt-10 overflow-visible"
+    >
+      {/* 3D Rubik's Cube floating in the middle - NO boxes, NO extra cards */}
+      <div 
+        ref={mountRef} 
+        className="w-full h-[500px] sm:h-[580px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+      />
     </section>
   );
 };
