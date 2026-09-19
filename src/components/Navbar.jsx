@@ -1,147 +1,119 @@
 import React, { useState } from 'react';
-import { Cpu, Menu, X, Shield, ArrowUpRight, Presentation, FileText, Trophy, Sparkles } from 'lucide-react';
 
 const Navbar = ({ onRegisterClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const navLinks = [
+    { name: 'Overview', href: '#hero' },
+    { name: 'About', href: '#about' },
+    { name: 'Tracks', href: '#tracks' },
+    { name: 'Timeline', href: '#timeline' },
+    { name: 'FAQ', href: '#faq' }
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-4 flex items-center justify-between bg-gradient-to-b from-[#030716]/90 via-[#030716]/50 to-transparent backdrop-blur-xl transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3.5 md:py-4 transition-all duration-300">
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-4">
-        {/* Left Brand Pill */}
-        <a href="#hero" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/15 text-white text-sm font-bold tracking-tight hover:scale-105 transition-transform flex-shrink-0">
-          <Shield className="w-4 h-4 text-orange-400 flex-shrink-0 animate-pulse" />
-          <span className="font-bold font-mono tracking-wider">NEXATHON</span>
+
+        <a
+          href="#hero"
+          className="flex items-center gap-2 group cursor-pointer select-none"
+        >
+          <span className="font-['Oxanium',sans-serif] font-black text-lg sm:text-xl text-white tracking-wider group-hover:text-cyan-400 transition-colors">
+            NEXATHON
+          </span>
+          <span className="text-[11px] font-mono font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-400/25 px-2 py-0.5 rounded-full">
+            2026
+          </span>
         </a>
 
-        {/* Center Nav Glass Bar (Desktop XL) */}
-        <div className="hidden xl:flex items-center gap-6 px-7 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10">
-          <a href="#hero" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
-            overview
-          </a>
-          <a href="#about" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
-            about
-          </a>
-          <a href="#tracks" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
-            tracks
-          </a>
-          <a href="#prizes" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
-            prizes
-          </a>
-          <a href="#timeline" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
-            timeline
-          </a>
-          <a href="#faq" className="text-zinc-300 hover:text-white text-xs uppercase tracking-wider font-semibold transition-colors duration-200">
-            faq
-          </a>
-        </div>
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 px-6 py-2 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-xs font-mono font-semibold uppercase tracking-widest text-zinc-300 hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
 
-        {/* Right Action Button & Mobile Trigger */}
-        <div className="flex items-center gap-2.5 flex-shrink-0">
-          {/* Desktop & Tablet Register Button */}
-          <button 
-            onClick={onRegisterClick} 
-            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-white text-slate-950 text-xs font-bold uppercase tracking-wider hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.45)] active:scale-95 transition-all duration-200 whitespace-nowrap cursor-pointer"
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onRegisterClick}
+            className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs font-mono font-bold uppercase tracking-wider shadow-sm hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
           >
-            <span>register now</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            REGISTER NOW
           </button>
 
-          {/* Mobile / Tablet Toggle Button */}
-          <button 
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-zinc-200 hover:text-white transition-colors cursor-pointer"
+            className="md:hidden w-9 h-9 rounded-full bg-white/[0.06] border border-white/15 flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-white/[0.1] transition-colors"
             aria-label="Toggle Navigation Menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
+            <span
+              className={`w-3.5 h-0.5 bg-white transition-all duration-300 transform ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+                }`}
+            />
+            <span
+              className={`w-3.5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''
+                }`}
+            />
+            <span
+              className={`w-3.5 h-0.5 bg-white transition-all duration-300 transform ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+                }`}
+            />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Backdrop & Drawer */}
       {mobileMenuOpen && (
         <>
-          {/* Backdrop Click Dismiss */}
-          <div 
-            className="xl:hidden fixed inset-0 bg-black/70 backdrop-blur-md z-40 transition-opacity"
+          {/* Backdrop */}
+          <div
+            className="md:hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-40 transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Drawer Menu Box */}
-          <div className="xl:hidden fixed top-16 left-3 right-3 sm:left-6 sm:right-6 bg-[#040816]/95 backdrop-blur-2xl rounded-3xl p-6 flex flex-col gap-3.5 border border-cyan-500/25 shadow-[0_20px_60px_rgba(0,0,0,0.95)] z-50 text-left animate-in fade-in slide-in-from-top-4 duration-200">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>NEXATHON 2026 NAVIGATION</span>
-              </div>
-              <button 
+          <div className="md:hidden fixed top-16 left-3 right-3 sm:left-6 sm:right-6 bg-[#040816]/98 backdrop-blur-2xl rounded-2xl p-5 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)] z-50 flex flex-col animate-in fade-in slide-in-from-top-2 duration-200">
+
+            {/* Header */}
+            <div className="flex items-center justify-between pb-3 mb-1 border-b border-white/10 text-[11px] font-mono uppercase tracking-widest text-zinc-400">
+              <span>NAVIGATION</span>
+              <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-zinc-400 hover:text-white p-1"
+                className="text-[11px] text-zinc-400 hover:text-white transition-colors cursor-pointer font-bold tracking-wider"
               >
-                <X className="w-4 h-4" />
+                CLOSE
               </button>
             </div>
 
-            <a 
-              href="#hero" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="text-zinc-200 hover:text-cyan-300 py-2.5 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between font-medium text-sm transition-colors"
-            >
-              <span>Overview</span>
-              <Shield className="w-4 h-4 text-orange-400" />
-            </a>
+            <div className="flex flex-col">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-2.5 px-2 font-['Oxanium',sans-serif] text-sm font-semibold text-zinc-200 hover:text-white border-b border-white/5 hover:border-white/10 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
 
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="text-zinc-200 hover:text-cyan-300 py-2.5 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between font-medium text-sm transition-colors"
-            >
-              <span>About Nexathon</span>
-              <Sparkles className="w-4 h-4 text-cyan-400" />
-            </a>
-
-            <a 
-              href="#tracks" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="text-zinc-200 hover:text-cyan-300 py-2.5 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between font-medium text-sm transition-colors"
-            >
-              <span>Competition Tracks</span>
-              <Presentation className="w-4 h-4 text-pink-400" />
-            </a>
-
-            <a 
-              href="#prizes" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="text-zinc-200 hover:text-cyan-300 py-2.5 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between font-medium text-sm transition-colors"
-            >
-              <span>Prize Pool (₹20,000+)</span>
-              <Sparkles className="w-4 h-4 text-cyan-400" />
-            </a>
-
-            <a 
-              href="#timeline" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="text-zinc-200 hover:text-cyan-300 py-2.5 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between font-medium text-sm transition-colors"
-            >
-              <span>Roadmap & Timeline</span>
-              <Cpu className="w-4 h-4 text-blue-400" />
-            </a>
-
-            <a 
-              href="#faq" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="text-zinc-200 hover:text-cyan-300 py-2.5 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between font-medium text-sm transition-colors"
-            >
-              <span>FAQ & Support</span>
-              <FileText className="w-4 h-4 text-cyan-400" />
-            </a>
-
-            <button 
-              onClick={() => { setMobileMenuOpen(false); onRegisterClick(); }} 
-              className="mt-2 w-full py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-black font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,119,0,0.5)] transition-all cursor-pointer"
-            >
-              <span>Register for Nexathon</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
+            <div className="pt-4 mt-2 border-t border-white/10 flex justify-center">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onRegisterClick();
+                }}
+                className="w-full py-2.5 rounded-full bg-white hover:bg-zinc-100 text-slate-950 text-xs font-mono font-bold uppercase tracking-wider shadow-sm hover:scale-102 active:scale-98 transition-all cursor-pointer text-center"
+              >
+                REGISTER NOW
+              </button>
+            </div>
           </div>
         </>
       )}

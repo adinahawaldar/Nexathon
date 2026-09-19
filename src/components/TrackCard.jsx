@@ -15,10 +15,11 @@ const TrackCard = ({
   prizePool,
   image,
   onSelect,
-  onKnowMore
+  onKnowMore,
+  isLast = false
 }) => {
   return (
-    <div className="group w-full py-8 sm:py-10 border-b border-white/15 hover:bg-white/[0.02] transition-colors duration-300">
+    <div className={`group w-full py-8 sm:py-10 ${isLast ? 'border-b border-white/15' : ''} hover:bg-white/[0.02] transition-colors duration-300`}>
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-8">
         
         {/* Left Sub-Group: Thumbnail + Date + Vertical Divider */}

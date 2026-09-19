@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const FaqSection = ({ onRegisterClick }) => {
-  // Default open item is index 1 ([02]) just like the user's reference image
   const [openIdx, setOpenIdx] = useState(1);
 
   const faqs = [
@@ -53,14 +52,12 @@ const FaqSection = ({ onRegisterClick }) => {
       id="faq" 
       className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 py-20 md:py-28 text-left scroll-mt-20"
     >
-      {/* FAQ Title: Pure white, clean, left-aligned, matching the reference image */}
       <div className="w-full pb-6 border-b border-white/20">
         <h2 className="font-['Space_Grotesk',sans-serif] font-bold text-5xl sm:text-6xl md:text-7xl text-white tracking-tight leading-none">
           FAQ
         </h2>
       </div>
 
-      {/* Accordion List: Full width, open editorial layout with frosted glass on active */}
       <div className="w-full divide-y divide-white/15 border-b border-white/15">
         {faqs.map((faq, idx) => {
           const isOpen = openIdx === idx;
@@ -74,7 +71,6 @@ const FaqSection = ({ onRegisterClick }) => {
                   : 'bg-transparent text-white'
               }`}
             >
-              {/* Row Header / Toggle Button */}
               <button
                 onClick={() => setOpenIdx(isOpen ? -1 : idx)}
                 className={`w-full py-6 sm:py-7 flex items-center justify-between text-left cursor-pointer transition-all duration-150 ${
@@ -111,7 +107,6 @@ const FaqSection = ({ onRegisterClick }) => {
                       <polyline points="7 7 17 7 17 17" />
                     </svg>
                   ) : (
-                    // Pointing Down-Right ↘ (Collapsed in dark mode)
                     <svg 
                       className="w-6 h-6 sm:w-7 sm:h-7 text-zinc-400 group-hover:text-white" 
                       viewBox="0 0 24 24" 
@@ -128,7 +123,6 @@ const FaqSection = ({ onRegisterClick }) => {
                 </div>
               </button>
 
-              {/* Answer Content (Visible only when expanded inside the glass card) */}
               {isOpen && (
                 <div className="px-4 sm:px-8 pb-8 pt-0 animate-fadeIn">
                   <div className="sm:pl-12 md:pl-14 max-w-4xl">
@@ -143,7 +137,6 @@ const FaqSection = ({ onRegisterClick }) => {
         })}
       </div>
 
-      {/* Bottom Full-Width Registration Banner */}
       <div className="mt-16 sm:mt-20 w-full rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_12px_40px_rgba(0,0,0,0.6)]">
         <div>
           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2">

@@ -17,7 +17,7 @@ import TimelineSection from '../components/TimelineSection';
 import FaqSection from '../components/FaqSection';
 import FooterSection from '../components/FooterSection';
 
-const HeroSection = ({ onKnowMore }) => {
+const LandingPage = ({ onKnowMore }) => {
   const [activeTab, setActiveTab] = useState('project'); // 'project' | 'paper'
   const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -309,4 +309,4 @@ const HeroSection = ({ onKnowMore }) => {
   );
 };
 
-export default HeroSection;
+export default LandingPage;

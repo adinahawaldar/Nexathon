@@ -58,24 +58,31 @@ const TracksSection = ({ onRegisterTrack, onKnowMore }) => {
 
       {/* Full-width Rows */}
       <div className="w-full flex flex-col">
-        {tracks.map(track => (
-          <TrackCard
-            key={track.id}
-            trackNumber={track.trackNumber}
-            title={track.title}
-            category={track.category}
-            subtitle={track.subtitle}
-            dateDayMonth={track.dateDayMonth}
-            dateYear={track.dateYear}
-            teamSize={track.teamSize}
-            fee={track.fee}
-            eventDate={track.eventDate}
-            domains={track.domains}
-            prizePool={track.prizePool}
-            image={track.image}
-            onSelect={() => onRegisterTrack(track.id)}
-            onKnowMore={() => onKnowMore(track.id)}
-          />
+        {tracks.map((track, index) => (
+          <React.Fragment key={track.id}>
+            <TrackCard
+              trackNumber={track.trackNumber}
+              title={track.title}
+              category={track.category}
+              subtitle={track.subtitle}
+              dateDayMonth={track.dateDayMonth}
+              dateYear={track.dateYear}
+              teamSize={track.teamSize}
+              fee={track.fee}
+              eventDate={track.eventDate}
+              domains={track.domains}
+              prizePool={track.prizePool}
+              image={track.image}
+              onSelect={() => onRegisterTrack(track.id)}
+              onKnowMore={() => onKnowMore(track.id)}
+              isLast={index === tracks.length - 1}
+            />
+            {index < tracks.length - 1 && (
+              <div 
+                className="w-full h-[2px] bg-white/35 shadow-[0_1px_3px_rgba(0,0,0,0.6)]" 
+              />
+            )}
+          </React.Fragment>
         ))}
       </div>
     </section>

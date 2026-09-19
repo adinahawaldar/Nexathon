@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HeroSection from './pages/HeroSection';
+import LandingPage from './pages/LandingPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import PaperDetailsPage from './pages/PaperDetailsPage';
 import { X, Sparkles, CheckCircle2 } from 'lucide-react';
@@ -93,7 +93,7 @@ function App() {
       )}
 
       {currentRoute === 'home' && (
-        <HeroSection onKnowMore={navigateToTrack} />
+        <LandingPage onKnowMore={navigateToTrack} />
       )}
 
       {/* Global Quick Registration Modal */}

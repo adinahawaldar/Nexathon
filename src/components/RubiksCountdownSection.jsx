@@ -13,8 +13,8 @@ const RubiksCountdownSection = () => {
     const height = container.clientHeight || 560;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
-    camera.position.set(0, 0.4, 7.2);
+    const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 1000);
+    camera.position.set(0, 0.3, 7.6);
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -22,49 +22,42 @@ const RubiksCountdownSection = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Studio Lighting for sleek cyber reflections
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    // Clean, even studio lighting with ZERO harsh glare or blown-out point light hotspots
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
-    keyLight.position.set(5, 8, 8);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    keyLight.position.set(5, 8, 7);
     scene.add(keyLight);
 
-    const cyanGlow = new THREE.PointLight(0x00f0ff, 3.5, 25);
-    cyanGlow.position.set(-6, 3, 5);
-    scene.add(cyanGlow);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    fillLight.position.set(-5, -3, 5);
+    scene.add(fillLight);
 
-    const orangeGlow = new THREE.PointLight(0xff7700, 3, 25);
-    orangeGlow.position.set(6, -3, 5);
-    scene.add(orangeGlow);
-
-    const backRim = new THREE.PointLight(0x38bdf8, 2.5, 20);
-    backRim.position.set(0, 5, -6);
+    const backRim = new THREE.DirectionalLight(0xffffff, 0.6);
+    backRim.position.set(0, 6, -6);
     scene.add(backRim);
 
     // Master rotating group
     const mainGroup = new THREE.Group();
+    mainGroup.rotation.x = 0.08;
+    mainGroup.rotation.y = 0;
     scene.add(mainGroup);
 
     // -------------------------------------------------------------
     // CREATE FRONT FACE TEXTURE TILES ("REGISTRATION CLOSING ON 2ND OCTOBER")
     // -------------------------------------------------------------
-    // Master 1024x1024 canvas that renders the message with neon cyber styling
     const masterCanvas = document.createElement('canvas');
     masterCanvas.width = 1024;
     masterCanvas.height = 1024;
     const mCtx = masterCanvas.getContext('2d');
 
-    // Gradient cyber background
-    const bgGrad = mCtx.createLinearGradient(0, 0, 1024, 1024);
-    bgGrad.addColorStop(0, '#04091a');
-    bgGrad.addColorStop(0.5, '#07132e');
-    bgGrad.addColorStop(1, '#020512');
-    mCtx.fillStyle = bgGrad;
+    // Clean dark matte background
+    mCtx.fillStyle = '#081022';
     mCtx.fillRect(0, 0, 1024, 1024);
 
-    // Micro grid lines
-    mCtx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+    // Subtle dark grid
+    mCtx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
     mCtx.lineWidth = 2;
     for (let i = 0; i <= 1024; i += 64) {
       mCtx.beginPath();
@@ -75,55 +68,40 @@ const RubiksCountdownSection = () => {
       mCtx.stroke();
     }
 
-    // Individual tile border insets to simulate physical Rubik's stickers
+    // Individual tile sticker insets
     const tileSize = 1024 / 3;
     for (let r = 0; r < 3; r++) {
       for (let c = 0; c < 3; c++) {
-        mCtx.fillStyle = 'rgba(255, 255, 255, 0.03)';
-        mCtx.fillRect(c * tileSize + 10, r * tileSize + 10, tileSize - 20, tileSize - 20);
+        // Tile sticker background
+        mCtx.fillStyle = '#0f1f3d';
+        mCtx.fillRect(c * tileSize + 14, r * tileSize + 14, tileSize - 28, tileSize - 28);
 
-        mCtx.strokeStyle = 'rgba(0, 240, 255, 0.35)';
+        // Crisp border
+        mCtx.strokeStyle = 'rgba(56, 189, 248, 0.6)';
         mCtx.lineWidth = 4;
-        mCtx.strokeRect(c * tileSize + 10, r * tileSize + 10, tileSize - 20, tileSize - 20);
-
-        // Corner accents on each tile
-        mCtx.fillStyle = '#00f0ff';
-        mCtx.fillRect(c * tileSize + 10, r * tileSize + 10, 12, 4);
-        mCtx.fillRect(c * tileSize + 10, r * tileSize + 10, 4, 12);
+        mCtx.strokeRect(c * tileSize + 14, r * tileSize + 14, tileSize - 28, tileSize - 28);
       }
     }
 
     mCtx.textAlign = 'center';
     mCtx.textBaseline = 'middle';
 
-    // ROW 1 (Top): "REGISTRATION"
-    mCtx.save();
-    mCtx.font = '900 78px "Oxanium", "Orbitron", "Space Grotesk", sans-serif';
-    mCtx.shadowColor = 'rgba(0, 240, 255, 0.9)';
-    mCtx.shadowBlur = 30;
+    // ROW 1 (Top): "REGISTRATION" - Sharp white font
+    mCtx.font = '900 74px "Oxanium", "Orbitron", sans-serif';
     mCtx.fillStyle = '#ffffff';
     mCtx.fillText('REGISTRATION', 512, tileSize * 0.5);
-    mCtx.restore();
 
-    // ROW 2 (Middle): "CLOSING ON"
-    mCtx.save();
-    mCtx.font = '900 74px "Oxanium", "Orbitron", "Space Grotesk", sans-serif';
-    mCtx.shadowColor = 'rgba(255, 136, 0, 0.95)';
-    mCtx.shadowBlur = 30;
-    mCtx.fillStyle = '#ffaa33';
+    // ROW 2 (Middle): "CLOSING ON" - Warm amber font
+    mCtx.font = '900 70px "Oxanium", "Orbitron", sans-serif';
+    mCtx.fillStyle = '#f59e0b';
     mCtx.fillText('CLOSING ON', 512, tileSize * 1.5);
-    mCtx.restore();
 
-    // ROW 3 (Bottom): "2ND OCTOBER"
-    mCtx.save();
-    mCtx.font = '900 86px "Oxanium", "Orbitron", "Space Grotesk", sans-serif';
-    mCtx.shadowColor = 'rgba(0, 240, 255, 1)';
-    mCtx.shadowBlur = 35;
-    mCtx.fillStyle = '#00f0ff';
+    // ROW 3 (Bottom): "2ND OCTOBER" - Crisp cyan font
+    mCtx.font = '900 80px "Oxanium", "Orbitron", sans-serif';
+    mCtx.fillStyle = '#38bdf8';
     mCtx.fillText('2ND OCTOBER', 512, tileSize * 2.5);
-    mCtx.restore();
 
-    // Sliced textures map: key `${col}_${row}`
+    // Sliced textures map
     const frontTextures = {};
     for (let r = 0; r < 3; r++) {
       for (let c = 0; c < 3; c++) {
@@ -149,45 +127,41 @@ const RubiksCountdownSection = () => {
     }
 
     // -------------------------------------------------------------
-    // BUILD 3X3 CUBIES
+    // BUILD 3X3 CUBIES WITH MATTE MATERIALS (NO HOTSPOTS)
     // -------------------------------------------------------------
-    const CUBE_SIZE = 0.96;
+    const CUBE_SIZE = 0.94;
     const SPACING = 1.04;
     const cubies = [];
 
-    // Face standard colors: Right(Cyan), Left(Pink), Top(Amber), Bottom(Blue), Front(Textured), Back(White)
+    // Clean matte Rubik's face colors
     const faceColors = [
-      0x00f0ff, // Right (+X)
-      0xf472b6, // Left (-X)
-      0xfbbf24, // Top (+Y)
-      0x3b82f6, // Bottom (-Y)
-      0xff7700, // Front (+Z fallback)
-      0xe2e8f0  // Back (-Z)
+      0x0284c7, // Right (+X) Cyan Blue
+      0xe11d48, // Left (-X) Rose
+      0xd97706, // Top (+Y) Amber
+      0x2563eb, // Bottom (-Y) Royal Blue
+      0xe2e8f0, // Front (+Z fallback)
+      0xf1f5f9  // Back (-Z) White
     ];
 
-    const innerCoreColor = 0x070c1a;
+    // Dark slate body for cubie inner frame
+    const innerCoreColor = 0x0f172a;
 
     for (let x = -1; x <= 1; x++) {
       for (let y = -1; y <= 1; y++) {
         for (let z = -1; z <= 1; z++) {
-          // Determine front tile texture if z === 1
           let frontMaterial;
           if (z === 1) {
-            const col = x + 1; // 0, 1, 2
-            const row = 1 - y; // y=1 -> row 0, y=0 -> row 1, y=-1 -> row 2
+            const col = x + 1;
+            const row = 1 - y;
             const tex = frontTextures[`${col}_${row}`];
-            frontMaterial = new THREE.MeshStandardMaterial({
-              map: tex,
-              roughness: 0.15,
-              metalness: 0.6,
-              emissive: 0x002233,
-              emissiveMap: tex
+            frontMaterial = new THREE.MeshBasicMaterial({
+              map: tex
             });
           } else {
             frontMaterial = new THREE.MeshStandardMaterial({
               color: innerCoreColor,
-              roughness: 0.2,
-              metalness: 0.8
+              roughness: 0.8,
+              metalness: 0.0
             });
           }
 
@@ -195,170 +169,183 @@ const RubiksCountdownSection = () => {
             // Right (+X)
             new THREE.MeshStandardMaterial({
               color: x === 1 ? faceColors[0] : innerCoreColor,
-              roughness: 0.15,
-              metalness: 0.7,
-              emissive: x === 1 ? 0x003344 : 0x000000
+              roughness: 0.8,
+              metalness: 0.0
             }),
             // Left (-X)
             new THREE.MeshStandardMaterial({
               color: x === -1 ? faceColors[1] : innerCoreColor,
-              roughness: 0.15,
-              metalness: 0.7,
-              emissive: x === -1 ? 0x330022 : 0x000000
+              roughness: 0.8,
+              metalness: 0.0
             }),
             // Top (+Y)
             new THREE.MeshStandardMaterial({
               color: y === 1 ? faceColors[2] : innerCoreColor,
-              roughness: 0.15,
-              metalness: 0.7,
-              emissive: y === 1 ? 0x332200 : 0x000000
+              roughness: 0.8,
+              metalness: 0.0
             }),
             // Bottom (-Y)
             new THREE.MeshStandardMaterial({
               color: y === -1 ? faceColors[3] : innerCoreColor,
-              roughness: 0.15,
-              metalness: 0.7,
-              emissive: y === -1 ? 0x001144 : 0x000000
+              roughness: 0.8,
+              metalness: 0.0
             }),
             // Front (+Z)
             frontMaterial,
             // Back (-Z)
             new THREE.MeshStandardMaterial({
               color: z === -1 ? faceColors[5] : innerCoreColor,
-              roughness: 0.15,
-              metalness: 0.7,
-              emissive: z === -1 ? 0x111111 : 0x000000
+              roughness: 0.8,
+              metalness: 0.0
             })
           ];
 
           const geom = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE);
-          const cubie = new THREE.Mesh(geom, materials);
-          cubie.position.set(x * SPACING, y * SPACING, z * SPACING);
-          cubie.userData = {
-            initialPos: new THREE.Vector3(x * SPACING, y * SPACING, z * SPACING),
-            grid: { x, y, z }
-          };
-
-          mainGroup.add(cubie);
-          cubies.push(cubie);
+          const mesh = new THREE.Mesh(geom, materials);
+          mesh.position.set(x * SPACING, y * SPACING, z * SPACING);
+          mainGroup.add(mesh);
+          cubies.push(mesh);
         }
       }
     }
 
-    // Set initial viewing angle so the front face with text is facing the user with slight 3D perspective
-    mainGroup.rotation.set(0.08, 0, 0);
-
     // -------------------------------------------------------------
-    // CLEAN 2-3 ROTATION SOLVE ON SCROLL (NO MESSY SLICES)
+    // INTERACTION: MOUSE DRAG & TOUCH
     // -------------------------------------------------------------
     let isDragging = false;
     let prevMouseX = 0;
     let prevMouseY = 0;
+    let velX = 0;
+    let velY = 0;
+
+    const domElement = renderer.domElement;
 
     const onMouseDown = (e) => {
       isDragging = true;
       prevMouseX = e.clientX;
       prevMouseY = e.clientY;
+      velX = 0;
+      velY = 0;
     };
 
     const onMouseMove = (e) => {
       if (!isDragging) return;
       const deltaX = e.clientX - prevMouseX;
       const deltaY = e.clientY - prevMouseY;
-      mainGroup.rotation.y += deltaX * 0.008;
-      mainGroup.rotation.x += deltaY * 0.008;
       prevMouseX = e.clientX;
       prevMouseY = e.clientY;
+
+      velX = deltaX * 0.005;
+      velY = deltaY * 0.005;
+
+      mainGroup.rotation.y += velX;
+      mainGroup.rotation.x += velY;
     };
 
     const onMouseUp = () => {
       isDragging = false;
     };
 
-    const domElement = renderer.domElement;
+    // Touch support for mobile
+    const onTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        prevMouseX = e.touches[0].clientX;
+        prevMouseY = e.touches[0].clientY;
+      }
+    };
+
+    const onTouchMove = (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const deltaX = e.touches[0].clientX - prevMouseX;
+      const deltaY = e.touches[0].clientY - prevMouseY;
+      prevMouseX = e.touches[0].clientX;
+      prevMouseY = e.touches[0].clientY;
+
+      mainGroup.rotation.y += deltaX * 0.005;
+      mainGroup.rotation.x += deltaY * 0.005;
+    };
+
+    const onTouchEnd = () => {
+      isDragging = false;
+    };
+
     domElement.addEventListener('mousedown', onMouseDown);
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mouseup', onMouseUp);
 
-    // Smooth Spin State
-    let isSpinning = false;
-    let spinStartTime = 0;
-    let spinStartAngle = 0;
-    let spinTargetAngle = 0;
-    const SPIN_DURATION = 2300; // ~2.3 seconds
+    domElement.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onTouchEnd);
 
-    const triggerSpin = (direction = 1) => {
-      if (isDragging) return;
-      spinStartTime = performance.now();
-      spinStartAngle = mainGroup.rotation.y;
-      // Rotate 2 full rotations (4 * PI) in the direction of the scroll
-      const rotations = 2;
-      const targetDelta = direction * rotations * Math.PI * 2;
-      spinTargetAngle = Math.round((spinStartAngle + targetDelta) / (Math.PI * 2)) * (Math.PI * 2);
-      isSpinning = true;
-      setIsSolved(false);
-    };
-
-    // Trigger on scroll up or down
+    // -------------------------------------------------------------
+    // SCROLL-DRIVEN ROTATION & AUTO-SOLVING ON SCROLL UP/DOWN
+    // -------------------------------------------------------------
     let lastScrollY = window.scrollY;
-    let scrollThrottleTimeout = null;
+    let scrollVelocityY = 0;
+    let scrollVelocityX = 0;
+    let isActivelyScrolling = false;
+    let scrollTimer = null;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY;
+      const deltaY = currentScrollY - lastScrollY;
       lastScrollY = currentScrollY;
 
-      if (Math.abs(delta) < 5) return;
+      // Each scroll movement imparts rotational impulse (both Y rotation and dynamic 3D tumble)
+      scrollVelocityY += deltaY * 0.006;
+      scrollVelocityX += Math.abs(deltaY) * 0.0015;
 
-      if (!isSpinning) {
-        const dir = delta >= 0 ? 1 : -1;
-        triggerSpin(dir);
-      }
+      isActivelyScrolling = true;
+      setIsSolved(false);
+
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        isActivelyScrolling = false;
+      }, 160);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Initial demonstration spin on page load
-    setTimeout(() => {
-      triggerSpin(1);
-    }, 500);
-
-    // Animation Loop
-    let clock = 0;
+    // -------------------------------------------------------------
+    // RENDER LOOP
+    // -------------------------------------------------------------
     let animationFrameId;
+    let clock = 0;
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
       clock += 0.016;
 
-      if (isSpinning && !isDragging) {
-        const elapsed = performance.now() - spinStartTime;
-        const progress = Math.min(elapsed / SPIN_DURATION, 1);
+      if (!isDragging) {
+        if (isActivelyScrolling || Math.abs(scrollVelocityY) > 0.001) {
+          // Apply scroll-driven rotation momentum
+          mainGroup.rotation.y += scrollVelocityY;
+          mainGroup.rotation.x += scrollVelocityX;
 
-        // Smooth cubic ease-out deceleration
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        mainGroup.rotation.y = spinStartAngle + (spinTargetAngle - spinStartAngle) * easeOut;
+          // Smooth friction damping
+          scrollVelocityY *= 0.88;
+          scrollVelocityX *= 0.88;
+        } else {
+          // AUTO-SOLVE: When scrolling stops, smoothly lerp to nearest front-facing solved angle!
+          const targetY = Math.round(mainGroup.rotation.y / (Math.PI * 2)) * (Math.PI * 2);
+          mainGroup.rotation.y = THREE.MathUtils.lerp(mainGroup.rotation.y, targetY, 0.08);
+          mainGroup.rotation.x = THREE.MathUtils.lerp(mainGroup.rotation.x, 0.08, 0.08);
+          mainGroup.rotation.z = THREE.MathUtils.lerp(mainGroup.rotation.z, 0, 0.08);
 
-        // Subtle dynamic 3D tilt during spin that settles to 0.08 at the finish
-        const tiltWobble = Math.sin(progress * Math.PI) * 0.22;
-        mainGroup.rotation.x = 0.08 + tiltWobble;
-        mainGroup.rotation.z = Math.sin(progress * Math.PI * 2) * 0.05 * (1 - progress);
+          // Mouse drag inertia damping if applied
+          velX *= 0.92;
+          velY *= 0.92;
+          mainGroup.rotation.y += velX;
+          mainGroup.rotation.x += velY;
 
-        if (progress >= 1) {
-          mainGroup.rotation.y = spinTargetAngle;
-          mainGroup.rotation.x = 0.08;
-          mainGroup.rotation.z = 0;
-          isSpinning = false;
-          setIsSolved(true);
+          // Gentle floating breathing while settled
+          mainGroup.position.y = Math.sin(clock * 1.5) * 0.06;
+
+          if (Math.abs(mainGroup.rotation.y - targetY) < 0.01) {
+            setIsSolved(true);
+          }
         }
-      } else if (!isDragging) {
-        // Gentle ambient floating breathing while solved
-        mainGroup.position.y = Math.sin(clock * 1.5) * 0.08;
-        // Keep front face squarely locked
-        const snappedY = Math.round(mainGroup.rotation.y / (Math.PI * 2)) * (Math.PI * 2);
-        mainGroup.rotation.y = THREE.MathUtils.lerp(mainGroup.rotation.y, snappedY, 0.08);
-        mainGroup.rotation.x = THREE.MathUtils.lerp(mainGroup.rotation.x, 0.08, 0.08);
-        mainGroup.rotation.z = THREE.MathUtils.lerp(mainGroup.rotation.z, 0, 0.08);
       }
 
       renderer.render(scene, camera);
@@ -379,9 +366,13 @@ const RubiksCountdownSection = () => {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      clearTimeout(scrollTimer);
       domElement.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
+      domElement.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       if (container && renderer.domElement) {
@@ -396,9 +387,7 @@ const RubiksCountdownSection = () => {
       id="countdown" 
       className="relative z-10 w-full max-w-5xl mx-auto min-h-[540px] sm:min-h-[620px] flex flex-col items-center justify-center py-8 px-4 scroll-mt-10 overflow-visible"
     >
-      {/* 3D Rubik's Cube floating seamlessly in 3D space */}
-
-      {/* 3D Rubik's Cube floating in the middle - NO boxes, NO extra cards */}
+      {/* 3D Rubik's Cube with scroll-rotation and auto-solving */}
       <div 
         ref={mountRef} 
         className="w-full h-[500px] sm:h-[580px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"

@@ -9,7 +9,6 @@ const AboutSection = () => {
     >
 
 
-      {/* Top Editorial Label - Minimal and centered */}
       <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-3 sm:mb-4 text-[10px] sm:text-xs font-mono font-medium tracking-wider uppercase text-cyan-400 text-center">
         <span className="text-cyan-400/90">// Introduction</span>
         <span className="text-zinc-600">•</span>
@@ -18,7 +17,6 @@ const AboutSection = () => {
         <span className="text-cyan-300 font-semibold">Dept. of CSE (Data Science)</span>
       </div>
 
-      {/* Main Editorial Statement - Centered in the middle above the 3 boxes */}
       <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 flex flex-col items-center">
         <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-zinc-200 leading-relaxed tracking-normal mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-center">
           <strong className="text-white font-bold">Nexathon II</strong>{' '}
@@ -36,7 +34,6 @@ const AboutSection = () => {
         </p>
       </div>
 
-      {/* 3 Circular Orb Cards - Single row on both mobile and desktop with perfectly fitted, compact content */}
       <div className="flex flex-row items-center justify-center gap-1.5 xs:gap-2.5 sm:gap-5 md:gap-8 pt-2 pb-6 max-w-full">
 
         {/* Circle 1: Domains */}
@@ -55,7 +52,6 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Circle 2: Stages (Vertically offset downward in single row with compact centered content) */}
         <div className="w-[106px] h-[106px] xs:w-[116px] xs:h-[116px] sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full bg-[#060c1d]/90 backdrop-blur-2xl border border-emerald-400/30 shadow-[0_10px_30px_rgba(0,0,0,0.7),0_0_15px_rgba(52,211,153,0.12)] p-1.5 sm:p-4 md:p-5 flex flex-col items-center justify-center text-center translate-y-2 sm:translate-y-4 md:translate-y-6 group hover:scale-105 hover:border-emerald-400/60 hover:shadow-[0_16px_40px_rgba(52,211,153,0.22)] transition-all duration-300 cursor-default flex-shrink-0">
           <div className="flex flex-col items-center justify-center m-auto w-full px-1">
             <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-emerald-500/15 text-emerald-300 flex items-center justify-center mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform">
