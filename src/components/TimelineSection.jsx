@@ -13,15 +13,15 @@ const TimelineSection = () => {
         {
           title: 'Registration Opens',
           details: [
-            { text: 'Paper Presentation & Project Presentation Tracks' },
-            { text: 'Mode: Online Portal Submissions Live' }
+            { text: 'Technical Paper Presentation & Project Presentation Tracks' },
+            { text: 'Mode: Online Registration Live' }
           ]
         }
       ]
     },
     {
-      day: 'Fri',
-      date: '02',
+      day: 'Sat',
+      date: '03',
       month: 'October, 2026',
       badgeColor: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30',
       lineColor: 'from-indigo-400 to-indigo-600',

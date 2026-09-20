@@ -45,7 +45,7 @@ const RubiksCountdownSection = () => {
     scene.add(mainGroup);
 
     // -------------------------------------------------------------
-    // CREATE FRONT FACE TEXTURE TILES ("REGISTRATION CLOSING ON 2ND OCTOBER")
+    // CREATE FRONT FACE TEXTURE TILES ("REGISTRATION CLOSING ON 3RD OCTOBER")
     // -------------------------------------------------------------
     const masterCanvas = document.createElement('canvas');
     masterCanvas.width = 1024;
@@ -96,10 +96,10 @@ const RubiksCountdownSection = () => {
     mCtx.fillStyle = '#f59e0b';
     mCtx.fillText('CLOSING ON', 512, tileSize * 1.5);
 
-    // ROW 3 (Bottom): "2ND OCTOBER" - Crisp cyan font
+    // ROW 3 (Bottom): "3RD OCTOBER" - Crisp cyan font
     mCtx.font = '900 80px "Oxanium", "Orbitron", sans-serif';
     mCtx.fillStyle = '#38bdf8';
-    mCtx.fillText('2ND OCTOBER', 512, tileSize * 2.5);
+    mCtx.fillText('3RD OCTOBER', 512, tileSize * 2.5);
 
     // Sliced textures map
     const frontTextures = {};
