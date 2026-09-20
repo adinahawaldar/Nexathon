@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const FaqSection = ({ onRegisterClick }) => {
+  const registrationLink = "https://forms.gle/Fz7EnLzh3i7u7UcMA";
   const [openIdx, setOpenIdx] = useState(1);
 
   const faqs = [
@@ -13,12 +14,12 @@ const FaqSection = ({ onRegisterClick }) => {
     {
       index: '[02]',
       q: 'WHAT ARE THE COMPETITIONS, AND CAN I REGISTER FOR BOTH?',
-      a: 'Nexathon II features two flagship tracks: (1) Project Competition and (2) Paper Competition. Yes, you can register for both competitions at a discounted combined fee of ₹500.'
+      a: 'Nexathon II features two flagship tracks: (1) Project Competition and (2) Technical Paper Presentation Competition. Yes, you can register for both competitions at a discounted combined fee of ₹500.'
     },
     {
       index: '[03]',
       q: 'WHAT IS THE TEAM SIZE, AND CAN I PARTICIPATE INDIVIDUALLY?',
-      a: 'Project teams must have 2 to 3 members. Individual (solo) participation is allowed exclusively for the Paper Competition.'
+      a: 'Project teams must have 2 to 3 members. Individual (solo) participation is allowed exclusively for the Technical Paper Presentation Competition.'
     },
     {
       index: '[04]',
@@ -38,7 +39,7 @@ const FaqSection = ({ onRegisterClick }) => {
     {
       index: '[07]',
       q: 'WHAT IS THE PRIZE POOL?',
-      a: 'The overall prize pool for Nexathon II is ₹20,000+ across tracks, along with certificates, trophies, and recognition.'
+      a: 'The overall prize pool for Nexathon II is ₹21,000+ across tracks, along with certificates, trophies, and recognition.'
     },
     {
       index: '[08]',
@@ -78,7 +79,6 @@ const FaqSection = ({ onRegisterClick }) => {
                 }`}
                 aria-expanded={isOpen}
               >
-                {/* Left Side: [01] Index & Question */}
                 <div className="flex items-center gap-4 sm:gap-8 flex-1 pr-4">
                   <span className={`font-mono text-xs sm:text-sm shrink-0 select-none ${
                     isOpen ? 'text-cyan-400 font-semibold' : 'text-zinc-500'
@@ -90,10 +90,8 @@ const FaqSection = ({ onRegisterClick }) => {
                   </span>
                 </div>
 
-                {/* Right Side: Diagonal Arrow Icon */}
                 <div className="shrink-0 ml-2">
                   {isOpen ? (
-                    // Pointing Up-Right ↗ (Expanded in frosted glass card)
                     <svg 
                       className="w-6 h-6 sm:w-7 sm:h-7 text-white" 
                       viewBox="0 0 24 24" 
@@ -147,13 +145,15 @@ const FaqSection = ({ onRegisterClick }) => {
           </p>
         </div>
 
-        <button
-          onClick={onRegisterClick}
+        <a
+          href={registrationLink}
+          target="_blank"
+          rel="noopener noreferrer"
           className="shrink-0 px-8 py-3.5 rounded-full bg-white text-slate-950 font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-zinc-200 transition-all shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
         >
           <span>Register Now</span>
           <ArrowUpRight className="w-4 h-4" />
-        </button>
+        </a>
       </div>
     </section>
   );
