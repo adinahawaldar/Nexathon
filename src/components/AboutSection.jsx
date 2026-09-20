@@ -25,8 +25,9 @@ const AboutSection = () => {
           organized by <strong className="text-white font-semibold">AIKTC&apos;s DataNexus Club</strong> for students and tech enthusiasts. It challenges participants to build data-driven solutions and tackle real-world problems across diverse domains like{' '}
           <span className="text-cyan-300 font-medium">Healthcare</span>,{' '}
           <span className="text-emerald-300 font-medium">Fintech</span>,{' '}
-          <span className="text-amber-300 font-medium">Education</span>, and{' '}
-          <span className="text-blue-300 font-medium">Agriculture</span>.
+          <span className="text-amber-300 font-medium">Education</span>,{' '}
+          <span className="text-blue-300 font-medium">Agriculture</span>, and {''}
+          <span className="text-pink-300 font-medium">Open Innovation</span>,{' '}
         </h2>
         <p className="text-xs sm:text-sm md:text-base text-zinc-400 font-normal leading-relaxed max-w-2xl text-center">
           The event features multiple competitive stages including presentation rounds and final judging offering cash prizes, mentorship, and networking opportunities.
@@ -41,12 +42,12 @@ const AboutSection = () => {
             <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-cyan-500/15 text-cyan-300 flex items-center justify-center mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform">
               <Brain className="w-2 h-2 sm:w-3 sm:h-3" />
             </div>
-            <span className="text-[6.5px] xs:text-[7.5px] sm:text-[9px] font-mono font-bold tracking-widest text-cyan-400 uppercase mb-0.5">DOMAINS</span>
-            <h3 className="text-[8.5px] xs:text-[9.5px] sm:text-xs md:text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 mb-0.5 leading-tight text-center">
+            <span className="text-[13px] xs:text-[14px] sm:text-[15px] font-mono font-bold tracking-widest text-cyan-400 uppercase mb-0.5">DOMAINS</span>
+            <h3 className="text-[13px] xs:text-[14px] sm:text-base md:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 mb-0.5 leading-tight text-center">
               Real-World Data
             </h3>
-            <p className="text-[7px] xs:text-[7.5px] sm:text-[10px] text-zinc-300 font-normal leading-[1.2] max-w-[76px] xs:max-w-[86px] sm:max-w-[140px] text-center">
-              Healthcare, Fintech, Edu &amp; Agriculture.
+            <p className="text-[10px] xs:text-[11px] sm:text-xs md:text-sm text-zinc-300 font-normal leading-[1.2] max-w-[82px] xs:max-w-[92px] sm:max-w-[140px] text-center">
+              Healthcare, Fintech, Edu, Agriculture &amp; Open Innovation .
             </p>
           </div>
         </div>
@@ -56,11 +57,11 @@ const AboutSection = () => {
             <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-emerald-500/15 text-emerald-300 flex items-center justify-center mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform">
               <Target className="w-2 h-2 sm:w-3 sm:h-3" />
             </div>
-            <span className="text-[6.5px] xs:text-[7.5px] sm:text-[9px] font-mono font-bold tracking-widest text-emerald-400 uppercase mb-0.5">STAGES</span>
-            <h3 className="text-[8.5px] xs:text-[9.5px] sm:text-xs md:text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300 mb-0.5 leading-tight text-center">
+            <span className="text-[13px] xs:text-[14px] sm:text-[15px] font-mono font-bold tracking-widest text-emerald-400 uppercase mb-0.5">STAGES</span>
+            <h3 className="text-[13px] xs:text-[14px] sm:text-base md:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300 mb-0.5 leading-tight text-center">
               Competitive Rounds
             </h3>
-            <p className="text-[7px] xs:text-[7.5px] sm:text-[10px] text-zinc-300 font-normal leading-[1.2] max-w-[76px] xs:max-w-[86px] sm:max-w-[140px] text-center">
+            <p className="text-[10px] xs:text-[11px] sm:text-[12px] md:text-base text-zinc-300 font-normal leading-[1.2] max-w-[82px] xs:max-w-[92px] sm:max-w-[140px] text-center">
               Presentation stages &amp; jury evaluation.
             </p>
           </div>
@@ -72,11 +73,11 @@ const AboutSection = () => {
             <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-amber-500/15 text-amber-300 flex items-center justify-center mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform">
               <Sparkles className="w-2 h-2 sm:w-3 sm:h-3" />
             </div>
-            <span className="text-[6.5px] xs:text-[7.5px] sm:text-[9px] font-mono font-bold tracking-widest text-amber-400 uppercase mb-0.5">REWARDS</span>
-            <h3 className="text-[8.5px] xs:text-[9.5px] sm:text-xs md:text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400 mb-0.5 leading-tight text-center">
+            <span className="text-[13px] xs:text-[14px] sm:text-[15px] font-mono font-bold tracking-widest text-amber-400 uppercase mb-0.5">REWARDS</span>
+            <h3 className="text-[13px] xs:text-[14px] sm:text-base md:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400 mb-0.5 leading-tight text-center">
               Prizes &amp; Growth
             </h3>
-            <p className="text-[7px] xs:text-[7.5px] sm:text-[10px] text-zinc-300 font-normal leading-[1.2] max-w-[76px] xs:max-w-[86px] sm:max-w-[140px] text-center">
+            <p className="text-[10px] xs:text-[11px] sm:text-[12px] md:text-base text-zinc-300 font-normal leading-[1.2] max-w-[82px] xs:max-w-[92px] sm:max-w-[140px] text-center">
               Cash awards, mentorship &amp; networking.
             </p>
           </div>
@@ -88,4 +89,3 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-
