@@ -16,6 +16,7 @@ const TrackCard = ({
   image,
   onSelect,
   onKnowMore,
+  registrationLink,
   isLast = false
 }) => {
   return (
@@ -116,13 +117,15 @@ const TrackCard = ({
               <ChevronRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
-            <button
-              onClick={onSelect}
+            <a
+              href={registrationLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 sm:px-6 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs font-extrabold uppercase tracking-wider shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_15px_rgba(255,255,255,0.2)] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <span>REGISTER NOW</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </button>
+            </a>
           </div>
 
         </div>

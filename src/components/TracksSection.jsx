@@ -4,35 +4,37 @@ import projectThumb from '../assets/project-thumb.jpg';
 import paperThumb from '../assets/paper-thumb.jpg';
 
 const TracksSection = ({ onRegisterTrack, onKnowMore }) => {
+  const registrationLink = "https://forms.gle/Fz7EnLzh3i7u7UcMA";
+
   const tracks = [
     {
       id: 'project',
       trackNumber: 1,
       title: 'Project Competition',
-      category: '8-HOUR DATA SCIENCE HACKATHON',
-      subtitle: 'An intensive 8-hour hackathon where participants develop and showcase data-driven solutions to real-world problems. Pre-made projects are allowed subject to official rules.',
+      category: 'DATA SCIENCE PROJECT COMPETITION',
+      subtitle: 'An intensive project competition where participants develop and showcase innovative, data-driven solutions to real-world problems.',
       dateDayMonth: '09.10',
       dateYear: '26',
       teamSize: '2 – 3 Members',
       fee: '₹300 (₹500 for both)',
       eventDate: '9 Oct 2026 • 9:00 AM',
       domains: ['Healthcare', 'Fintech', 'Education', 'Agriculture', 'Open Innovation'],
-      prizePool: '₹20,000+ Pool',
+      prizePool: '₹21,000+ Pool',
       image: projectThumb
     },
     {
       id: 'paper',
       trackNumber: 2,
-      title: 'Paper Competition',
+      title: 'Technical Paper Presentation Competition',
       category: 'TECHNICAL RESEARCH DEFENSE',
       subtitle: 'Present original research or technical papers before a distinguished panel of judges covering problem formulation, methodology, findings, and practical significance.',
       dateDayMonth: '09.10',
       dateYear: '26',
-      teamSize: 'Solo or Team (1–3)',
+      teamSize: 'Solo or Team (1–2 Members)',
       fee: '₹300 (₹500 for both)',
       eventDate: '9 Oct 2026 • 9:00 AM',
       domains: ['Healthcare', 'Fintech', 'Education', 'Agriculture', 'Open Innovation'],
-      prizePool: '₹20,000+ Pool',
+      prizePool: '₹21,000+ Pool',
       image: paperThumb
     }
   ];
@@ -75,6 +77,7 @@ const TracksSection = ({ onRegisterTrack, onKnowMore }) => {
               image={track.image}
               onSelect={() => onRegisterTrack(track.id)}
               onKnowMore={() => onKnowMore(track.id)}
+              registrationLink={registrationLink}
               isLast={index === tracks.length - 1}
             />
             {index < tracks.length - 1 && (

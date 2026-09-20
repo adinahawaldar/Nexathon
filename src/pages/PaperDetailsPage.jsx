@@ -21,6 +21,8 @@ import {
 import paperThumb from '../assets/paper-thumb.jpg';
 
 const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
+  const registrationLink = "https://forms.gle/Fz7EnLzh3i7u7UcMA";
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
@@ -30,6 +32,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
       {/* Top Floating Navigation Bar */}
       <header className="sticky top-0 z-50 bg-[#030716]/85 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          
           <button
             onClick={onBack}
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-zinc-300 hover:text-pink-400 transition-colors cursor-pointer group"
@@ -42,15 +45,17 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
 
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline-flex px-3 py-1 rounded-full bg-pink-500/10 border border-pink-400/30 text-pink-300 text-xs font-mono font-bold">
-              TRACK 02 • PAPER COMPETITION
+              TRACK 02 • TECHNICAL PAPER PRESENTATION COMPETITION
             </span>
-            <button
-              onClick={() => onRegisterClick('paper')}
+            <a
+              href={registrationLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 sm:px-6 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs font-extrabold uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_15px_rgba(255,255,255,0.2)] cursor-pointer"
             >
               <span>REGISTER NOW</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </button>
+            </a>
           </div>
         </div>
       </header>
@@ -109,7 +114,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                   stage: 'STAGE 6',
                   time: '05:30 PM',
                   title: 'Grand Valedictory & Award Ceremony',
-                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹20,000+ prize pool and certificate handover.'
+                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,000+ prize pool and certificate handover.'
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-baseline gap-2 sm:gap-6 pb-4 border-b border-white/10 last:border-0">
@@ -150,7 +155,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                     Academic &amp; Research Defense
                   </h4>
                   <p className="text-xs text-zinc-300 mt-1">
-                    Individual (Solo) or team participation up to 3 members.
+                    Individual (Solo) or team participation up to 2 members.
                   </p>
                 </div>
               </div>
@@ -178,7 +183,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                 Anjuman-I-Islam’s Kalsekar Technical Campus (AIKTC) in New Panvel, Navi Mumbai, provides a world-class academic environment for technology and data research.
               </p>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                The Paper Competition takes place in fully equipped seminar auditoriums with high-definition digital projection systems, audio lecterns, and seating for distinguished judging panels and academic attendees.
+                The Technical Paper Presentation takes place in fully equipped seminar auditoriums with high-definition digital projection systems, audio lecterns, and seating for distinguished judging panels and academic attendees.
               </p>
 
               <div className="pt-4 border-t border-white/10 space-y-2.5">
@@ -262,7 +267,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                 READY TO<br />PUBLISH?
               </h2>
               <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                The Paper Competition provides participants with a platform to present technical and research-oriented papers related to Data Science, Machine Learning, and Artificial Intelligence across 5 core domains:
+                The Technical Paper Presentation Competition provides participants with a platform to present technical and research-oriented papers related to Data Science, Machine Learning, and Artificial Intelligence across 5 core domains:
               </p>
 
               {/* 5 Domains List */}
@@ -359,8 +364,8 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
             <span className="mx-4 font-bold text-pink-400">❯ EDUCATION</span>
             <span className="mx-4 font-bold text-pink-400">❯ AGRICULTURE</span>
             <span className="mx-4 font-bold text-pink-400">❯ OPEN INNOVATION</span>
-            <span className="mx-4 font-bold text-white">❯ SOLO OR TEAM (UP TO 3)</span>
-            <span className="mx-4 font-bold text-amber-300">❯ ₹20,000+ CASH POOL</span>
+            <span className="mx-4 font-bold text-white">❯ SOLO OR TEAM (UP TO 2)</span>
+            <span className="mx-4 font-bold text-amber-300">❯ ₹21,000+ CASH POOL</span>
             <span className="mx-4 font-bold text-white">❯ AIKTC NEW PANVEL</span>
             <span className="mx-4 font-bold text-emerald-400">❯ MERIT CERTIFICATES</span>
             <span className="mx-4 font-bold text-pink-400">❯ HEALTHCARE</span>
@@ -399,7 +404,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                 <div className="grid grid-cols-2 gap-4 pb-6 border-b border-white/10 text-xs font-mono">
                   <div>
                     <span className="text-[10px] text-zinc-500 uppercase font-semibold">TEAM SIZE</span>
-                    <p className="text-sm font-bold text-white mt-0.5">Solo or Team (1–3)</p>
+                    <p className="text-sm font-bold text-white mt-0.5">Solo or Team (1–2)</p>
                   </div>
                   <div>
                     <span className="text-[10px] text-zinc-500 uppercase font-semibold">FORMAT</span>
@@ -415,13 +420,15 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => onRegisterClick('paper')}
+                <a
+                  href={registrationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full py-4 mt-6 rounded-full bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-[0_4px_25px_rgba(0,0,0,0.6),0_0_20px_rgba(255,255,255,0.3)] hover:scale-102 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>CONFIRM REGISTRATION</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -439,11 +446,11 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-pink-400 font-bold">—</span>
-                    <span><strong>Flexible Participation:</strong> Individual (Solo) participation is permitted, as well as teams of up to 3 members.</span>
+                    <span><strong>Flexible Participation:</strong> Individual (Solo) participation is permitted, as well as teams of up to 2 members.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-pink-400 font-bold">—</span>
-                    <span><strong>Total Prize Pool:</strong> ₹20,000+ awarded across podium finishes. Exact distribution will be announced soon.</span>
+                    <span><strong>Total Prize Pool:</strong> ₹21,000+ awarded across podium finishes. Exact distribution will be announced soon.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-pink-400 font-bold">—</span>
