@@ -117,7 +117,7 @@ const LandingPage = ({ onKnowMore }) => {
         <div className="flex flex-row items-center justify-center gap-3 sm:gap-14 w-full max-w-xl mx-auto mb-6 sm:mb-8 text-center px-4">
           <div className="flex flex-col items-center flex-1 sm:flex-initial">
             <span className="text-[clamp(1.25rem,2.8vw,2.5rem)] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 drop-shadow-[0_0_20px_rgba(251,146,60,0.5)]">
-              ₹20,000+
+              ₹21,000+
             </span>
             <span className="text-zinc-300 font-mono tracking-wider font-semibold uppercase text-[9px] sm:text-xs mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap">
               total prize pool
