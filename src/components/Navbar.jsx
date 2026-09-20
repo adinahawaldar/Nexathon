@@ -20,12 +20,12 @@ const Navbar = ({ onRegisterClick }) => {
 
         <a
           href="#hero"
-          className="flex items-center gap-2 group cursor-pointer select-none"
+          className="relative flex items-center w-16 sm:w-24 h-10 group cursor-pointer select-none"
 >
           <img
             src={logo}
             alt="Nexathon Logo"
-            className="h-9 w-9 sm:h-50 sm:w-60 object-contain"
+            className="absolute -left-10 top-[90%] -translate-y-1/2 h-24 w-24 sm:h-32 sm:w-32 scale-[2.75] sm:scale-[2.25] origin-left object-contain"
           />
         </a>
 
