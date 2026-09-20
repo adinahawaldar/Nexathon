@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/nexathon_logo.png';
 
 const Navbar = ({ onRegisterClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,6 +12,8 @@ const Navbar = ({ onRegisterClick }) => {
     { name: 'FAQ', href: '#faq' }
   ];
 
+  const registrationLink = "https://forms.gle/Fz7EnLzh3i7u7UcMA";
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3.5 md:py-4 transition-all duration-300">
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -18,13 +21,12 @@ const Navbar = ({ onRegisterClick }) => {
         <a
           href="#hero"
           className="flex items-center gap-2 group cursor-pointer select-none"
-        >
-          <span className="font-['Oxanium',sans-serif] font-black text-lg sm:text-xl text-white tracking-wider group-hover:text-cyan-400 transition-colors">
-            NEXATHON
-          </span>
-          <span className="text-[11px] font-mono font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-400/25 px-2 py-0.5 rounded-full">
-            2026
-          </span>
+>
+          <img
+            src={logo}
+            alt="Nexathon Logo"
+            className="h-9 w-9 sm:h-50 sm:w-60 object-contain"
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-8 px-6 py-2 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
@@ -40,12 +42,14 @@ const Navbar = ({ onRegisterClick }) => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={onRegisterClick}
+          <a
+            href={registrationLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs font-mono font-bold uppercase tracking-wider shadow-sm hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
           >
             REGISTER NOW
-          </button>
+          </a>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -104,15 +108,15 @@ const Navbar = ({ onRegisterClick }) => {
             </div>
 
             <div className="pt-4 mt-2 border-t border-white/10 flex justify-center">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onRegisterClick();
-                }}
+              <a
+                href={registrationLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-2.5 rounded-full bg-white hover:bg-zinc-100 text-slate-950 text-xs font-mono font-bold uppercase tracking-wider shadow-sm hover:scale-102 active:scale-98 transition-all cursor-pointer text-center"
               >
                 REGISTER NOW
-              </button>
+              </a>
             </div>
           </div>
         </>
