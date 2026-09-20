@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const FooterSection = ({ onRegisterClick }) => {
+  const registrationLink = "https://forms.gle/Fz7EnLzh3i7u7UcMA";
   const [hoveredCoin, setHoveredCoin] = useState(null);
 
   // 1. Organic, scattered mound tokens (random tilts, heights, and positions like the reference pile)
@@ -71,12 +72,14 @@ const FooterSection = ({ onRegisterClick }) => {
               >
                 TIMELINE
               </a>
-              <button
-                onClick={onRegisterClick}
+              <a
+                href={registrationLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-left text-white hover:text-pink-400 transition-colors cursor-pointer"
               >
                 REGISTER
-              </button>
+              </a>
             </div>
           </div>
 
@@ -128,7 +131,7 @@ const FooterSection = ({ onRegisterClick }) => {
               <span>FOLLOW US:</span>
               <div className="flex items-center gap-4 sm:gap-5 text-zinc-300">
                 <a
-                  href="https://chat.whatsapp.com"
+                  href="https://whatsapp.com/channel/0029VbBbnMZ9MF97N8yK692m"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition-colors"
@@ -143,7 +146,7 @@ const FooterSection = ({ onRegisterClick }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/datanexus_aiktc?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-pink-400 transition-colors"
@@ -156,7 +159,7 @@ const FooterSection = ({ onRegisterClick }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/data-nexus-club/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-sky-400 transition-colors"
