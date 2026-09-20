@@ -10,7 +10,6 @@ const AboutSection = () => {
 
 
       <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-3 sm:mb-4 text-[10px] sm:text-xs font-mono font-medium tracking-wider uppercase text-cyan-400 text-center">
-        <span className="text-cyan-400/90">// Introduction</span>
         <span className="text-zinc-600">•</span>
         <span className="text-zinc-300">Anjuman-I-Islam&apos;s Kalsekar Technical Campus</span>
         <span className="text-zinc-600">•</span>
