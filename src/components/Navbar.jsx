@@ -15,13 +15,13 @@ const Navbar = ({ onRegisterClick }) => {
   const registrationLink = "https://forms.gle/Fz7EnLzh3i7u7UcMA";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3.5 md:py-4 transition-all duration-300">
+    <header className="absolute top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3.5 md:py-4 transition-all duration-300">
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-4">
 
         <a
           href="#hero"
           className="relative flex items-center w-16 sm:w-24 h-10 group cursor-pointer select-none"
->
+        >
           <img
             src={logo}
             alt="Nexathon Logo"
@@ -57,16 +57,19 @@ const Navbar = ({ onRegisterClick }) => {
             aria-label="Toggle Navigation Menu"
           >
             <span
-              className={`w-3.5 h-0.5 bg-white transition-all duration-300 transform ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-                }`}
+              className={`w-3.5 h-0.5 bg-white transition-all duration-300 transform ${
+                mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+              }`}
             />
             <span
-              className={`w-3.5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''
-                }`}
+              className={`w-3.5 h-0.5 bg-white transition-all duration-300 ${
+                mobileMenuOpen ? 'opacity-0' : ''
+              }`}
             />
             <span
-              className={`w-3.5 h-0.5 bg-white transition-all duration-300 transform ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-                }`}
+              className={`w-3.5 h-0.5 bg-white transition-all duration-300 transform ${
+                mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+              }`}
             />
           </button>
         </div>
