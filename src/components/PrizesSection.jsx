@@ -13,31 +13,6 @@ const PrizesSection = () => {
     paper: {
       name: 'Paper Presentation',
       category: 'RESEARCH & THEORETICAL RIGOR',
-      subtotal: '₹15,500',
-      prizes: {
-        first: {
-          rank: '01',
-          tier: 'WINNER',
-          tag: 'CHAMPION',
-          amount: '₹7,500',
-        },
-        second: {
-          rank: '02',
-          tier: '1ST RUNNER UP',
-          tag: 'RUNNER UP',
-          amount: '₹5,000',
-        },
-        third: {
-          rank: '03',
-          tier: '2ND RUNNER UP',
-          tag: '2ND RUNNER UP',
-          amount: '₹3,000',
-        }
-      }
-    },
-    project: {
-      name: 'Project Presentation',
-      category: 'SOFTWARE & SYSTEMS INNOVATION',
       subtotal: '₹6,000',
       prizes: {
         first: {
@@ -57,6 +32,31 @@ const PrizesSection = () => {
           tier: '2ND RUNNER UP',
           tag: '2ND RUNNER UP',
           amount: '₹1,000',
+        }
+      }
+    },
+    project: {
+      name: 'Project Presentation',
+      category: 'SOFTWARE & SYSTEMS INNOVATION',
+      subtotal: '₹15,500',
+      prizes: {
+        first: {
+          rank: '01',
+          tier: 'WINNER',
+          tag: 'CHAMPION',
+          amount: '₹7,500',
+        },
+        second: {
+          rank: '02',
+          tier: '1ST RUNNER UP',
+          tag: 'RUNNER UP',
+          amount: '₹5,000',
+        },
+        third: {
+          rank: '03',
+          tier: '2ND RUNNER UP',
+          tag: '2ND RUNNER UP',
+          amount: '₹3,000',
         }
       }
     }
@@ -82,7 +82,7 @@ const PrizesSection = () => {
       {/* Top Header & Bounty Callout */}
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/15 text-zinc-300 text-xs font-mono font-semibold tracking-wider uppercase mb-3.5 shadow-[0_2px_15px_rgba(0,0,0,0.4)]">
         <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-        <span>TOTAL PRIZE POOL • ₹20,000+</span>
+        <span>TOTAL PRIZE POOL • ₹21,000+</span>
       </div>
 
       <h2 className="font-['Oxanium','Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-white mb-3 text-center drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
@@ -105,7 +105,7 @@ const PrizesSection = () => {
               : 'text-zinc-400 hover:text-white'
           }`}
         >
-          Paper Presentation <span className="text-[10px] opacity-75 font-normal">(₹15,500)</span>
+          Paper Presentation <span className="text-[10px] opacity-75 font-normal">(₹6,000)</span>
         </button>
 
         <button
@@ -116,7 +116,7 @@ const PrizesSection = () => {
               : 'text-zinc-400 hover:text-white'
           }`}
         >
-          Project Presentation <span className="text-[10px] opacity-75 font-normal">(₹6,000)</span>
+          Project Presentation <span className="text-[10px] opacity-75 font-normal">(₹15,500)</span>
         </button>
       </div>
 
