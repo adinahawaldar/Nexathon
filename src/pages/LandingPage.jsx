@@ -105,7 +105,7 @@ const LandingPage = ({ onKnowMore }) => {
             filter: 'drop-shadow(0 3px 1px #0088cc) drop-shadow(0 5px 2px #01356b) drop-shadow(0 10px 20px rgba(0,0,0,0.85)) drop-shadow(0 16px 36px rgba(0,0,0,0.75)) drop-shadow(0 0 25px rgba(0,229,255,0.6)) drop-shadow(0 0 50px rgba(0,140,255,0.35))'
           }}
         >
-          <span>NEXATHON</span>
+          <span>NEXATHON II</span>
         </h1>
 
         {/* Sub-description Paragraph (Normal Clean Text, NO Box) */}
