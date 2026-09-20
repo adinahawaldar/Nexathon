@@ -21,6 +21,8 @@ import {
 import projectThumb from '../assets/project-thumb.jpg';
 
 const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
+  const registrationLink = "https://forms.gle/Fz7EnLzh3i7u7UcMA";
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
@@ -44,13 +46,15 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
             <span className="hidden sm:inline-flex px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-mono font-bold">
               TRACK 01 • PROJECT COMPETITION
             </span>
-            <button
-              onClick={() => onRegisterClick('project')}
+            <a
+              href={registrationLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 sm:px-6 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-950 text-xs font-extrabold uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_15px_rgba(255,255,255,0.2)] cursor-pointer"
             >
               <span>REGISTER NOW</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </button>
+            </a>
           </div>
         </div>
       </header>
@@ -67,7 +71,7 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
               PROGRAM
             </h1>
             <p className="text-xs sm:text-sm font-mono text-zinc-400 max-w-2xl uppercase tracking-wider">
-              OFFICIAL 8-HOUR DATA SCIENCE HACKATHON SCHEDULE &amp; EVENT PROGRESSION
+              OFFICIAL DATA SCIENCE PROJECT COMPETITION SCHEDULE &amp; EVENT PROGRESSION
             </p>
           </div>
 
@@ -84,8 +88,8 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                 {
                   stage: 'STAGE 2',
                   time: '10:00 AM',
-                  title: 'Official Hackathon Kickoff',
-                  desc: 'Problem statement alignment, technical rules briefing, access to benchmark datasets, and commencement of the 8-hour sprint.'
+                  title: 'Official Competition Kickoff',
+                  desc: 'Problem statement alignment, technical rules briefing, access to benchmark datasets, and commencement of the innovation sprint.'
                 },
                 {
                   stage: 'STAGE 3',
@@ -109,7 +113,7 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                   stage: 'STAGE 6',
                   time: '06:00 PM',
                   title: 'Grand Valedictory & Award Ceremony',
-                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹20,000+ prize pool and trophy distribution.'
+                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,000+ prize pool and trophy distribution.'
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-baseline gap-2 sm:gap-6 pb-4 border-b border-white/10 last:border-0">
@@ -144,7 +148,7 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <span className="px-2.5 py-1 rounded-md bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[11px] font-mono font-bold uppercase tracking-wider">
-                    8-HOUR DATA SCIENCE HACKATHON
+                    DATA SCIENCE PROJECT COMPETITION
                   </span>
                   <h4 className="font-['Oxanium',sans-serif] text-xl font-bold text-white mt-2">
                     Collaborative AI &amp; ML Sprint
@@ -359,9 +363,9 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
             <span className="mx-4 font-bold text-cyan-400">❯ EDUCATION</span>
             <span className="mx-4 font-bold text-cyan-400">❯ AGRICULTURE</span>
             <span className="mx-4 font-bold text-cyan-400">❯ OPEN INNOVATION</span>
-            <span className="mx-4 font-bold text-white">❯ 8-HOUR SPRINT</span>
+            <span className="mx-4 font-bold text-cyan-400">❯ INNOVATION SPRINT</span>
             <span className="mx-4 font-bold text-emerald-400">❯ PRE-MADE PROJECTS ALLOWED</span>
-            <span className="mx-4 font-bold text-amber-300">❯ ₹20,000+ PRIZE POOL</span>
+            <span className="mx-4 font-bold text-amber-300">❯ ₹21,000+ PRIZE POOL</span>
             <span className="mx-4 font-bold text-white">❯ AIKTC NEW PANVEL</span>
             <span className="mx-4 font-bold text-cyan-400">❯ HEALTHCARE</span>
             <span className="mx-4 font-bold text-cyan-400">❯ FINTECH</span>
@@ -403,7 +407,7 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                   </div>
                   <div>
                     <span className="text-[10px] text-zinc-500 uppercase font-semibold">FORMAT</span>
-                    <p className="text-sm font-bold text-cyan-300 mt-0.5">8-Hour Hackathon</p>
+                    <p className="text-sm font-bold text-cyan-300 mt-0.5">Project Competition</p>
                   </div>
                   <div>
                     <span className="text-[10px] text-zinc-500 uppercase font-semibold">EVENT DATE</span>
@@ -415,13 +419,15 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => onRegisterClick('project')}
+                <a
+                  href={registrationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full py-4 mt-6 rounded-full bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-[0_4px_25px_rgba(0,0,0,0.6),0_0_20px_rgba(255,255,255,0.3)] hover:scale-102 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>CONFIRM REGISTRATION</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -439,7 +445,7 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400 font-bold">—</span>
-                    <span><strong>Total Prize Pool:</strong> ₹20,000+ awarded across podium finishes. Exact distribution finalized by committee.</span>
+                    <span><strong>Total Prize Pool:</strong> ₹21,000+ awarded across podium finishes. Exact distribution finalized by committee.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400 font-bold">—</span>
