@@ -193,7 +193,7 @@ const FaqSection = ({ onRegisterClick }) => {
               </p>
 
               <a
-                href="mailto:club@email.com"
+                href="mailto:datanexus.ds@aiktc.ac.in"
                 className="text-base sm:text-lg text-white hover:text-cyan-400 transition-colors break-all"
               >
                 datanexus.ds@aiktc.ac.in
