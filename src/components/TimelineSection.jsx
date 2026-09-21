@@ -37,23 +37,6 @@ const TimelineSection = () => {
       ]
     },
     {
-      day: 'TBA',
-      date: 'TBD',
-      month: 'October, 2026',
-      badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-      lineColor: 'from-orange-400 to-orange-600',
-      bulletColor: 'text-orange-400',
-      events: [
-        {
-          title: 'Selection & Shortlisting Phase',
-          details: [
-            { text: 'Status: To be finalized' },
-            { text: 'Screening & notification of shortlisted teams' }
-          ]
-        }
-      ]
-    },
-    {
       day: 'Fri',
       date: '09',
       month: 'October, 2026',
