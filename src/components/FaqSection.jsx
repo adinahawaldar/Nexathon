@@ -171,7 +171,10 @@ const FaqSection = ({ onRegisterClick }) => {
 
             <div>
               <p className="text-base sm:text-lg font-semibold text-white mb-1">
-                Aatif Shaikh
+                Aatif Shaikh   
+              </p>
+              <p className="text-sm sm:text-base font-semibold text-zinc-400 mb-1">
+                (Vice President, DataNexus Club)
               </p>
               <p className="text-sm sm:text-base font-semibold text-emerald-400 mb-1">
                 +91 7757831168
@@ -181,6 +184,9 @@ const FaqSection = ({ onRegisterClick }) => {
             <div>
               <p className="text-base sm:text-lg font-semibold text-white mb-1">
                 Nauman Patel
+              </p>
+              <p className="text-sm sm:text-base font-semibold text-zinc-400 mb-1">
+                (Treasurer, DataNexus Club)
               </p>
               <p className="text-sm sm:text-base font-semibold text-emerald-400 mb-1">
                 +91 9833188826
@@ -202,7 +208,6 @@ const FaqSection = ({ onRegisterClick }) => {
 
           </div>
         </div>
-
       </div>
     </section>
   );
