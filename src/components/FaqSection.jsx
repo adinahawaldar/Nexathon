@@ -135,25 +135,74 @@ const FaqSection = ({ onRegisterClick }) => {
         })}
       </div>
 
-      <div className="mt-16 sm:mt-20 w-full rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_12px_40px_rgba(0,0,0,0.6)]">
-        <div>
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2">
-            Ready to exhibit your research or engineering prototype?
-          </h3>
-          <p className="text-xs sm:text-sm text-zinc-400 max-w-xl">
-            Register for Paper Presentation or Project Presentation at Nexathon II. Submissions are open.
-          </p>
+      <div className="mt-16 sm:mt-20 w-full rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl p-6 sm:p-8 lg:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.6)]">
+
+        {/* CTA */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="flex-1">
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight mb-2">
+              Ready to exhibit your research or engineering prototype?
+            </h3>
+
+            <p className="text-xs sm:text-sm text-zinc-400 max-w-xl leading-relaxed">
+              Register for Paper Presentation or Project Presentation at Nexathon II. Submissions are open.
+            </p>
+          </div>
+
+          <a
+            href={registrationLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 px-7 sm:px-8 py-3.5 rounded-full bg-white text-slate-950 font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-zinc-200 transition-all shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
+          >
+            <span>Register Now</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
 
-        <a
-          href={registrationLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 px-8 py-3.5 rounded-full bg-white text-slate-950 font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-zinc-200 transition-all shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
-        >
-          <span>Register Now</span>
-          <ArrowUpRight className="w-4 h-4" />
-        </a>
+        {/* Contact Details */}
+        <div className="mt-8 pt-6 border-t border-white/10">
+
+          <h4 className="text-xl sm:text-2xl font-mono font-bold uppercase tracking-[0.18em] text-cyan-400 mb-7">
+            Contact Us
+          </h4>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div>
+              <p className="text-base sm:text-lg font-semibold text-white mb-1">
+                Aatif Shaikh
+              </p>
+              <p className="text-sm sm:text-base font-semibold text-emerald-400 mb-1">
+                +91 7757831168
+              </p>
+            </div>
+
+            <div>
+              <p className="text-base sm:text-lg font-semibold text-white mb-1">
+                Nauman Patel
+              </p>
+              <p className="text-sm sm:text-base font-semibold text-emerald-400 mb-1">
+                +91 9833188826
+              </p>
+            </div>
+
+            <div>
+              <p className="text-base sm:text-lg font-semibold text-blue-400 mb-1">
+                Write to us at
+              </p>
+
+              <a
+                href="mailto:club@email.com"
+                className="text-base sm:text-lg text-white hover:text-cyan-400 transition-colors break-all"
+              >
+                datanexus.ds@aiktc.ac.in
+              </a>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   );
