@@ -39,7 +39,7 @@ const FaqSection = ({ onRegisterClick }) => {
     {
       index: '[07]',
       q: 'WHAT IS THE PRIZE POOL?',
-      a: 'The overall prize pool for Nexathon II is ₹21,000+ across tracks, along with certificates, trophies, and recognition.'
+      a: 'The overall prize pool for Nexathon II is ₹21,500 across tracks, along with certificates, trophies, and recognition.'
     },
     {
       index: '[08]',

@@ -82,7 +82,7 @@ const PrizesSection = () => {
       {/* Top Header & Bounty Callout */}
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/15 text-zinc-300 text-xs font-mono font-semibold tracking-wider uppercase mb-3.5 shadow-[0_2px_15px_rgba(0,0,0,0.4)]">
         <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-        <span>TOTAL PRIZE POOL • ₹21,000+</span>
+        <span>TOTAL PRIZE POOL • ₹21,500</span>
       </div>
 
       <h2 className="font-['Oxanium','Space_Grotesk',sans-serif] font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-white mb-3 text-center drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">

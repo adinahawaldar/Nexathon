@@ -113,7 +113,7 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                   stage: 'STAGE 6',
                   time: '06:00 PM',
                   title: 'Grand Valedictory & Award Ceremony',
-                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,000+ prize pool and trophy distribution.'
+                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,500 prize pool and trophy distribution.'
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-baseline gap-2 sm:gap-6 pb-4 border-b border-white/10 last:border-0">
@@ -365,7 +365,7 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
             <span className="mx-4 font-bold text-cyan-400">❯ OPEN INNOVATION</span>
             <span className="mx-4 font-bold text-cyan-400">❯ INNOVATION SPRINT</span>
             <span className="mx-4 font-bold text-emerald-400">❯ PRE-MADE PROJECTS ALLOWED</span>
-            <span className="mx-4 font-bold text-amber-300">❯ ₹21,000+ PRIZE POOL</span>
+            <span className="mx-4 font-bold text-amber-300">❯ ₹21,500 PRIZE POOL</span>
             <span className="mx-4 font-bold text-white">❯ AIKTC NEW PANVEL</span>
             <span className="mx-4 font-bold text-cyan-400">❯ HEALTHCARE</span>
             <span className="mx-4 font-bold text-cyan-400">❯ FINTECH</span>
@@ -445,7 +445,11 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400 font-bold">—</span>
-                    <span><strong>Total Prize Pool:</strong> ₹21,000+ awarded across podium finishes. Exact distribution finalized by committee.</span>
+                    <span><strong>Project Eligibility:</strong>Only software-based projects are eligible for the Project Competition. Hardware projects and hardware-software hybrid projects are not allowed.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-cyan-400 font-bold">—</span>
+                    <span><strong>Total Prize Pool:</strong> ₹21,500 awarded across podium finishes. Exact distribution finalized by committee.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400 font-bold">—</span>

@@ -114,7 +114,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                   stage: 'STAGE 6',
                   time: '05:30 PM',
                   title: 'Grand Valedictory & Award Ceremony',
-                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,000+ prize pool and certificate handover.'
+                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,500 prize pool and certificate handover.'
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-baseline gap-2 sm:gap-6 pb-4 border-b border-white/10 last:border-0">
@@ -365,7 +365,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
             <span className="mx-4 font-bold text-pink-400">❯ AGRICULTURE</span>
             <span className="mx-4 font-bold text-pink-400">❯ OPEN INNOVATION</span>
             <span className="mx-4 font-bold text-white">❯ SOLO OR TEAM (UP TO 2)</span>
-            <span className="mx-4 font-bold text-amber-300">❯ ₹21,000+ CASH POOL</span>
+            <span className="mx-4 font-bold text-amber-300">❯ ₹21,500 CASH POOL</span>
             <span className="mx-4 font-bold text-white">❯ AIKTC NEW PANVEL</span>
             <span className="mx-4 font-bold text-emerald-400">❯ MERIT CERTIFICATES</span>
             <span className="mx-4 font-bold text-pink-400">❯ HEALTHCARE</span>
@@ -450,7 +450,7 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-pink-400 font-bold">—</span>
-                    <span><strong>Total Prize Pool:</strong> ₹21,000+ awarded across podium finishes. Exact distribution will be announced soon.</span>
+                    <span><strong>Total Prize Pool:</strong> ₹21,500 awarded across podium finishes. Exact distribution will be announced soon.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-pink-400 font-bold">—</span>
