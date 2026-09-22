@@ -81,39 +81,51 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
               {[
                 {
                   stage: 'STAGE 1',
-                  time: '09:00 AM',
-                  title: 'Participant Check-in & Lab Setup',
-                  desc: 'Arrival at AIKTC Panvel, participant verification, allocation of development workstations, and Wi-Fi/infrastructure setup.'
+                  time: '08:30 AM',
+                  title: 'Check-In & Arrival',
+                  desc: 'Participants arrive, complete check-in, and get ready for the competition.'
                 },
                 {
                   stage: 'STAGE 2',
-                  time: '10:00 AM',
-                  title: 'Official Competition Kickoff',
-                  desc: 'Problem statement alignment, technical rules briefing, access to benchmark datasets, and commencement of the innovation sprint.'
+                  time: '09:00 AM',
+                  title: 'Registration Desk Opens',
+                  desc: 'Registration and final participant verification begin.'
                 },
                 {
                   stage: 'STAGE 3',
-                  time: '01:00 PM',
-                  title: 'Mid-Sprint Mentorship & Lunch',
-                  desc: 'Technical checkpoint review by domain mentors, feedback on machine learning pipelines, and participant refreshments.'
+                  time: '10:00 AM',
+                  title: 'Opening Ceremony',
+                  desc: 'The event officially begins with the inaugural ceremony and opening address.'
                 },
                 {
                   stage: 'STAGE 4',
-                  time: '04:00 PM',
-                  title: 'Code Freeze & GitHub Submission',
-                  desc: 'Final commit to public GitHub/GitLab repositories, submission of presentation decks (PPT), and architecture documentation.'
+                  time: '10:30 AM',
+                  title: 'Nexathon II Goes Live',
+                  desc: 'The Project Competition officially kicks off and participants begin working on their software projects.'
                 },
                 {
                   stage: 'STAGE 5',
-                  time: '04:30 PM',
-                  title: 'Jury Evaluation & Project Demonstrations',
-                  desc: 'Participants present live demonstrations and technical defense before the distinguished judging panel across evaluation criteria.'
+                  time: '01:00 PM',
+                  title: 'Midday Break',
+                  desc: 'A scheduled break for refreshments and lunch.'
                 },
                 {
                   stage: 'STAGE 6',
-                  time: '06:00 PM',
-                  title: 'Grand Valedictory & Award Ceremony',
-                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,500 prize pool and trophy distribution.'
+                  time: '02:00 PM',
+                  title: 'Back to Build',
+                  desc: 'Participants return and continue developing, refining, and preparing their projects.'
+                },
+                {
+                  stage: 'STAGE 6',
+                  time: '03:00 PM',
+                  title: 'Project Evaluation',
+                  desc: 'Teams present their work for evaluation by the jury based on the competition criteria.'
+                },
+                {
+                  stage: 'STAGE 6',
+                  time: '04:30 PM',
+                  title: 'Valedictory & Recognition',
+                  desc: 'The event concludes with the valedictory ceremony, results, and recognition of winners.'
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-baseline gap-2 sm:gap-6 pb-4 border-b border-white/10 last:border-0">

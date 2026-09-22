@@ -82,39 +82,33 @@ const PaperDetailsPage = ({ onBack, onRegisterClick }) => {
               {[
                 {
                   stage: 'STAGE 1',
-                  time: '09:00 AM',
-                  title: 'Presenter Check-in & Slide Verification',
-                  desc: 'Arrival at AIKTC Panvel, participant verification, presentation slide upload, and audio-visual podium checks.'
+                  time: '08:30 AM',
+                  title: 'Participant Check-In',
+                  desc: 'Participants arrive at the venue, complete check-in, and prepare for the day.'
                 },
                 {
                   stage: 'STAGE 2',
-                  time: '10:00 AM',
-                  title: 'Symposium Inauguration & Chair Address',
-                  desc: 'Keynote opening remarks by research chairs, presentation protocol briefing, and introduction of the distinguished jury panel.'
+                  time: '09:00 AM',
+                  title: 'Registration & Verification',
+                  desc: 'Registration and participant verification take place before the programme begins.'
                 },
                 {
                   stage: 'STAGE 3',
-                  time: '10:30 AM',
-                  title: 'Oral Defense Sessions (Parallel Tracks)',
-                  desc: 'Oral paper presentations covering problem formulation, methodology, algorithmic architecture, and experimental trials.'
+                  time: '10:00 AM',
+                  title: 'Inaugural Ceremony',
+                  desc: 'The event officially opens with the inaugural ceremony and welcome address.'
                 },
                 {
                   stage: 'STAGE 4',
-                  time: '01:00 PM',
-                  title: 'Networking Lunch & Academic Exchange',
-                  desc: 'Interdisciplinary interactions among student researchers, faculty experts, and visiting industry evaluators.'
+                  time: '11:00 AM',
+                  title: 'Research Showcase Begins',
+                  desc: 'Technical paper presentations begin before the evaluation panel.'
                 },
                 {
                   stage: 'STAGE 5',
-                  time: '02:00 PM',
-                  title: 'Technical Q&A & Jury Deliberation',
-                  desc: 'In-depth defense questioning, comparative baseline scrutiny, and validation of findings before the review board.'
-                },
-                {
-                  stage: 'STAGE 6',
-                  time: '05:30 PM',
-                  title: 'Grand Valedictory & Award Ceremony',
-                  desc: 'Announcement of Winner, 1st Runner-Up, and 2nd Runner-Up with cash awards from the ₹21,500 prize pool and certificate handover.'
+                  time: '04:30 PM',
+                  title: 'Valedictory & Recognition',
+                  desc: 'The competition concludes with the valedictory ceremony and recognition of participants and winners.'
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-baseline gap-2 sm:gap-6 pb-4 border-b border-white/10 last:border-0">
