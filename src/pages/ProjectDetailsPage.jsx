@@ -116,13 +116,13 @@ const ProjectDetailsPage = ({ onBack, onRegisterClick }) => {
                   desc: 'Participants return and continue developing, refining, and preparing their projects.'
                 },
                 {
-                  stage: 'STAGE 6',
+                  stage: 'STAGE 7',
                   time: '03:00 PM',
                   title: 'Project Evaluation',
                   desc: 'Teams present their work for evaluation by the jury based on the competition criteria.'
                 },
                 {
-                  stage: 'STAGE 6',
+                  stage: 'STAGE 8',
                   time: '04:30 PM',
                   title: 'Valedictory & Recognition',
                   desc: 'The event concludes with the valedictory ceremony, results, and recognition of winners.'
