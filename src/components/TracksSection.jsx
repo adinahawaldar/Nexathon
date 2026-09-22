@@ -12,14 +12,24 @@ const TracksSection = ({ onRegisterTrack, onKnowMore }) => {
       trackNumber: 1,
       title: 'Project Competition',
       category: 'DATA SCIENCE PROJECT COMPETITION',
-      subtitle: 'An intensive project competition where participants develop and showcase innovative, data-driven solutions to real-world problems.',
+      subtitle: (
+        <>
+          An intensive project competition where participants develop and showcase innovative, data-driven solutions to real-world problems.
+          <br />
+          <span className="text-cyan-300 font-bold tracking-wide">
+            SOFTWARE PROJECTS ONLY
+          </span>
+          <br />
+          Hardware and hybrid (hardware-software) projects are not permitted.
+        </>
+      ),
       dateDayMonth: '09.10',
       dateYear: '26',
       teamSize: '2 – 3 Members',
       fee: '₹300 (₹500 for both)',
       eventDate: '9 Oct 2026 • 9:00 AM',
       domains: ['Healthcare', 'Fintech', 'Education', 'Agriculture', 'Open Innovation'],
-      prizePool: '₹21,000+ Pool',
+      prizePool: '₹21,500 Pool',
       image: projectThumb
     },
     {
@@ -34,7 +44,7 @@ const TracksSection = ({ onRegisterTrack, onKnowMore }) => {
       fee: '₹300 (₹500 for both)',
       eventDate: '9 Oct 2026 • 9:00 AM',
       domains: ['Healthcare', 'Fintech', 'Education', 'Agriculture', 'Open Innovation'],
-      prizePool: '₹21,000+ Pool',
+      prizePool: '₹21,500 Pool',
       image: paperThumb
     }
   ];
