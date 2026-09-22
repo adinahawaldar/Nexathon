@@ -5,7 +5,6 @@ const Navbar = ({ onRegisterClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Overview', href: '#hero' },
     { name: 'About', href: '#about' },
     { name: 'Tracks', href: '#tracks' },
     { name: 'Timeline', href: '#timeline' },
@@ -29,7 +28,7 @@ const Navbar = ({ onRegisterClick }) => {
           />
         </a>
 
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 px-6 py-2 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 px-6 py-3 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
           {navLinks.map((link) => (
             <a
               key={link.name}
